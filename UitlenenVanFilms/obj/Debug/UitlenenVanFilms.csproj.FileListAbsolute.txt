@@ -1,0 +1,38 @@
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe.config
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.pdb
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.Properties.Resources.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.GenerateResource.cache
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csprojAssemblyReference.cache
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\safe.exe
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\safe.pdb
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\safe.exe.config
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmlog.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CopyComplete
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe.config
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.pdb
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csprojAssemblyReference.cache
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmlog.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.Properties.Resources.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.GenerateResource.cache
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmAdmin.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmfilms.resources
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe.config
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.pdb
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.AssemblyReference.cache
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmAdmin.resources
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmfilms.resources
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmlog.resources
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.Properties.Resources.resources
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.GenerateResource.cache
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
+C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
