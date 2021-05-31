@@ -215,5 +215,19 @@ namespace safe
 
 
         }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 0)
+            {
+                MessageBox.Show("U kunt dit column niet aanpassen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataGridView1.Rows[e.RowIndex].Cells[0].ReadOnly = true;
+            }
+        }
     }
 }
