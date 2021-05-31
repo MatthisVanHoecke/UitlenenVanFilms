@@ -217,13 +217,13 @@ namespace UitlenenVanFilms
 
                         if (ok && admin)
                         {
-                            frmAdmin form = new frmAdmin(this);
+                            frmAdmin form = new frmAdmin(this, txtUserLogin.Text);
                             form.Show();
                             this.Hide();
                         }
                         else
                         {
-                            frmfilms form = new frmfilms(this);
+                            frmfilms form = new frmfilms(this, txtUserLogin.Text);
                             form.Show();
                             this.Hide();
                         }

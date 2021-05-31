@@ -33,7 +33,9 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblwelkom = new System.Windows.Forms.Label();
             this.tabControlHome.SuspendLayout();
+            this.home.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlHome
@@ -50,6 +52,7 @@
             // 
             // home
             // 
+            this.home.Controls.Add(this.lblwelkom);
             this.home.Location = new System.Drawing.Point(4, 22);
             this.home.Name = "home";
             this.home.Padding = new System.Windows.Forms.Padding(3);
@@ -89,6 +92,16 @@
             this.tabPage1.Text = "instellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblwelkom
+            // 
+            this.lblwelkom.AutoSize = true;
+            this.lblwelkom.Location = new System.Drawing.Point(654, 3);
+            this.lblwelkom.Name = "lblwelkom";
+            this.lblwelkom.Size = new System.Drawing.Size(35, 13);
+            this.lblwelkom.TabIndex = 0;
+            this.lblwelkom.Text = "label1";
+            this.lblwelkom.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // frmfilms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,6 +114,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frmfilms_FormClosed);
             this.Load += new System.EventHandler(this.frmfilms_Load);
             this.tabControlHome.ResumeLayout(false);
+            this.home.ResumeLayout(false);
+            this.home.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -112,6 +127,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label lblwelkom;
     }
 }
 

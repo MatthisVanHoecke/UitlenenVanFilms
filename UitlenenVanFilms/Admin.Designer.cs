@@ -124,6 +124,7 @@
             this.lstvwFilmsAdmin.Size = new System.Drawing.Size(776, 350);
             this.lstvwFilmsAdmin.TabIndex = 3;
             this.lstvwFilmsAdmin.UseCompatibleStateImageBehavior = false;
+            this.lstvwFilmsAdmin.SelectedIndexChanged += new System.EventHandler(this.LstvwFilmsAdmin_SelectedIndexChanged);
             // 
             // btnVerwijderen
             // 

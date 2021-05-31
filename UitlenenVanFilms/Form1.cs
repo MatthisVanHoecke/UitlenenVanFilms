@@ -13,12 +13,14 @@ namespace safe
 {
     public partial class frmfilms : Form
     {
-        frmlog instance;
+        private frmlog instance;
+        private string user = "";
 
-        public frmfilms(frmlog instance)
+        public frmfilms(frmlog instance, string user)
         {
             InitializeComponent();
             this.instance = instance;
+            this.user = user;
         }
 
         private void Frmfilms_FormClosed(object sender, FormClosedEventArgs e)
@@ -38,7 +40,7 @@ namespace safe
 
         private void frmfilms_Load(object sender, EventArgs e)
         {
-
+            lblwelkom.Text = "Welkom, " + user;
         }
     }
 }

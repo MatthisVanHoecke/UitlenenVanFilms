@@ -22,13 +22,27 @@ namespace safe
         private List<int> deletedRows = new List<int>();
         private IDictionary<string, string> Notifications;
         private IDictionary<string, string> Errors;
+        private string user = "";
+        private List<List<string>> filmitems = new List<List<string>>();
+        string nameF, descriptionF;
 
-        public frmAdmin(frmlog instance)
+        public frmAdmin(frmlog instance, string user)
         {
             InitializeComponent();
             this.instance = instance;
             Notifications = instance.getNotifications();
             Errors = instance.getErrors();
+            this.user = user;
+        }
+
+        public void setNameF(string name)
+        {
+            nameF = name;
+        }
+
+        public void setDescriptionF(string desc)
+        {
+            descriptionF = desc;
         }
 
         private void frmAdmin_Load(object sender, EventArgs e)
@@ -68,6 +82,8 @@ namespace safe
             }
         }
 
+
+
         private void loadFilmList()
         {
             lstvwFilmsAdmin.View = View.Details;
@@ -81,10 +97,37 @@ namespace safe
             string[] paths = { };
             paths = Directory.GetFiles(Directory.GetParent(Directory.GetCurrentDirectory()) + "/Images");
 
-            for(int i = 0; i < paths.Length; i++)
+            String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
+            OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
+            verbinding.Open();
+            try
+            {
+
+                String opdrString;
+
+                opdrString = "SELECT * FROM tblFilms";
+                OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
+
+                OleDbDataReader dataLezer = opdracht.ExecuteReader(CommandBehavior.CloseConnection);
+
+                while (dataLezer.Read())
+                {
+                    filmitems.Add(new List<string>() {dataLezer.GetValue(0).ToString(), dataLezer.GetValue(1).ToString(), dataLezer.GetValue(2).ToString(), dataLezer.GetValue(3).ToString() });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                verbinding.Close();
+            }
+
+            for (int i = 0; i < paths.Length; i++)
             {
                 imgs.Images.Add(Image.FromFile(paths[i]));
-                lstvwFilmsAdmin.Items.Add("hi", i);
+                lstvwFilmsAdmin.Items.Add(filmitems[i][2], i);
             }
 
             lstvwFilmsAdmin.SmallImageList = imgs;
@@ -113,7 +156,7 @@ namespace safe
                 verbinding.Open();
                 foreach (int val in changedRows)
                 {
-                    String sql = "UPDATE tblUsers SET Usernaam = ?, Passwoord = ?, Admin = ? WHERE Id = ?";
+                    String sql = "UPDATE tblUsers SET Usernaam = ?, Passwoord = ?, Admin = ? WHERE CustomerID = ?";
                     OleDbCommand opdracht = new OleDbCommand(sql, verbinding);
 
                     opdracht.Parameters.AddWithValue("", dataGridView1.Rows[val].Cells[1].Value);
@@ -125,7 +168,7 @@ namespace safe
                 }
                 foreach(int val in deletedRows)
                 {
-                    String sql = "DELETE FROM tblUsers WHERE Id = ?";
+                    String sql = "DELETE FROM tblUsers WHERE CustomerID = ?";
                     OleDbCommand opdracht = new OleDbCommand(sql, verbinding);
 
                     opdracht.Parameters.AddWithValue("", val);
@@ -164,16 +207,16 @@ namespace safe
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
+            frmToevoegen toevoegen = new frmToevoegen(this);
+            toevoegen.Show();
+
+
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
             verbinding.Open();
             try
             {
                 String opdrString;
-               
-                
-
-                String nameF, descriptionF;
 
                 nameF = Interaction.InputBox("Geef naam film in", "");
                 descriptionF = Interaction.InputBox("Geef beschrijving film in", "");
@@ -228,6 +271,11 @@ namespace safe
                 MessageBox.Show("U kunt dit column niet aanpassen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 dataGridView1.Rows[e.RowIndex].Cells[0].ReadOnly = true;
             }
+        }
+
+        private void LstvwFilmsAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
