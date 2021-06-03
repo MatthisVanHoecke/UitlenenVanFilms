@@ -24,7 +24,6 @@ namespace safe
         private IDictionary<string, string> Errors;
         private string user = "";
         private List<List<string>> filmitems = new List<List<string>>();
-        string nameF, descriptionF;
 
         public frmAdmin(frmlog instance, string user)
         {
@@ -33,16 +32,6 @@ namespace safe
             Notifications = instance.getNotifications();
             Errors = instance.getErrors();
             this.user = user;
-        }
-
-        public void setNameF(string name)
-        {
-            nameF = name;
-        }
-
-        public void setDescriptionF(string desc)
-        {
-            descriptionF = desc;
         }
 
         private void frmAdmin_Load(object sender, EventArgs e)
@@ -207,9 +196,12 @@ namespace safe
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            frmToevoegen toevoegen = new frmToevoegen(this);
+            frmToevoegen toevoegen = new frmToevoegen(this, instance);
             toevoegen.Show();
+        }
 
+        public void insertFilm(string name, string desc)
+        {
 
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -218,34 +210,16 @@ namespace safe
             {
                 String opdrString;
 
-                nameF = Interaction.InputBox("Geef naam film in", "");
-                descriptionF = Interaction.InputBox("Geef beschrijving film in", "");
 
-                if (nameF == "" || nameF == null)
-                {
-                    MessageBox.Show("naam invullen");
-                }
-                else
-                {
-                    if (descriptionF == "" || descriptionF == null)
-                    {
-                        MessageBox.Show("beschrijving invullen");
-                    }
-                    else
-                    {
+                opdrString = "INSERT INTO tblFilms (Name, Description) VALUES (?,?)";
+                //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
+                OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
-                        opdrString = "INSERT INTO tblFilms (Name, Description) VALUES (?,?)";
-                        //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
-                        OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
+                opdracht2.Parameters.AddWithValue("", name);
+                opdracht2.Parameters.AddWithValue("", desc);
 
-                        opdracht2.Parameters.AddWithValue("", nameF);
-                        opdracht2.Parameters.AddWithValue("", descriptionF);
+                opdracht2.ExecuteNonQuery();
 
-                        opdracht2.ExecuteNonQuery();
-
-
-                    }
-                }
             }
             catch (Exception ex)
             {
@@ -255,8 +229,6 @@ namespace safe
             {
                 verbinding.Close();
             }
-
-
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

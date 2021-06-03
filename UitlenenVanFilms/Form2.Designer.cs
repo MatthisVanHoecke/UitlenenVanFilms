@@ -33,6 +33,7 @@
             this.lblname = new System.Windows.Forms.Label();
             this.lbldescription = new System.Windows.Forms.Label();
             this.btnToevoegen = new System.Windows.Forms.Button();
+            this.btnChoose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtname
@@ -70,7 +71,7 @@
             // 
             // btnToevoegen
             // 
-            this.btnToevoegen.Location = new System.Drawing.Point(97, 241);
+            this.btnToevoegen.Location = new System.Drawing.Point(97, 284);
             this.btnToevoegen.Name = "btnToevoegen";
             this.btnToevoegen.Size = new System.Drawing.Size(150, 23);
             this.btnToevoegen.TabIndex = 4;
@@ -78,11 +79,22 @@
             this.btnToevoegen.UseVisualStyleBackColor = true;
             this.btnToevoegen.Click += new System.EventHandler(this.BtnToevoegen_Click);
             // 
+            // btnChoose
+            // 
+            this.btnChoose.Location = new System.Drawing.Point(97, 212);
+            this.btnChoose.Name = "btnChoose";
+            this.btnChoose.Size = new System.Drawing.Size(75, 23);
+            this.btnChoose.TabIndex = 5;
+            this.btnChoose.Text = "Kies File";
+            this.btnChoose.UseVisualStyleBackColor = true;
+            this.btnChoose.Click += new System.EventHandler(this.BtnChoose_Click);
+            // 
             // frmToevoegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 293);
+            this.ClientSize = new System.Drawing.Size(358, 377);
+            this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.btnToevoegen);
             this.Controls.Add(this.lbldescription);
             this.Controls.Add(this.lblname);
@@ -90,6 +102,7 @@
             this.Controls.Add(this.txtname);
             this.Name = "frmToevoegen";
             this.Text = "Film Toevoegen";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmToevoegen_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +115,6 @@
         private System.Windows.Forms.Label lblname;
         private System.Windows.Forms.Label lbldescription;
         private System.Windows.Forms.Button btnToevoegen;
+        private System.Windows.Forms.Button btnChoose;
     }
 }

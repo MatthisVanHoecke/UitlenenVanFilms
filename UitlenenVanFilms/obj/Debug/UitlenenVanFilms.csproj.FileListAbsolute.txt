@@ -34,3 +34,4 @@ C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVan
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmAdmin.resources
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmfilms.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources

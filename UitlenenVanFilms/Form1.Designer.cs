@@ -30,12 +30,16 @@
         {
             this.tabControlHome = new System.Windows.Forms.TabControl();
             this.home = new System.Windows.Forms.TabPage();
+            this.lblwelkom = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblwelkom = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.dgvUser = new System.Windows.Forms.DataGridView();
             this.tabControlHome.SuspendLayout();
             this.home.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlHome
@@ -62,6 +66,16 @@
             this.home.UseVisualStyleBackColor = true;
             this.home.Click += new System.EventHandler(this.home_Click);
             // 
+            // lblwelkom
+            // 
+            this.lblwelkom.AutoSize = true;
+            this.lblwelkom.Location = new System.Drawing.Point(654, 3);
+            this.lblwelkom.Name = "lblwelkom";
+            this.lblwelkom.Size = new System.Drawing.Size(35, 13);
+            this.lblwelkom.TabIndex = 0;
+            this.lblwelkom.Text = "label1";
+            this.lblwelkom.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -74,6 +88,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dgvUser);
+            this.tabPage3.Controls.Add(this.btnSave);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -92,15 +108,26 @@
             this.tabPage1.Text = "instellingen";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lblwelkom
+            // btnSave
             // 
-            this.lblwelkom.AutoSize = true;
-            this.lblwelkom.Location = new System.Drawing.Point(654, 3);
-            this.lblwelkom.Name = "lblwelkom";
-            this.lblwelkom.Size = new System.Drawing.Size(35, 13);
-            this.lblwelkom.TabIndex = 0;
-            this.lblwelkom.Text = "label1";
-            this.lblwelkom.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnSave.Location = new System.Drawing.Point(20, 338);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(96, 34);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // dgvUser
+            // 
+            this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUser.Location = new System.Drawing.Point(7, 23);
+            this.dgvUser.Name = "dgvUser";
+            this.dgvUser.Size = new System.Drawing.Size(776, 96);
+            this.dgvUser.TabIndex = 1;
+            this.dgvUser.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUser_CellClick);
+            this.dgvUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
+            this.dgvUser.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUser_CellValueChanged);
             // 
             // frmfilms
             // 
@@ -116,6 +143,8 @@
             this.tabControlHome.ResumeLayout(false);
             this.home.ResumeLayout(false);
             this.home.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,6 +157,8 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label lblwelkom;
+        private System.Windows.Forms.DataGridView dgvUser;
+        private System.Windows.Forms.Button btnSave;
     }
 }
 

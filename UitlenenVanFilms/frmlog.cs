@@ -21,7 +21,9 @@ namespace UitlenenVanFilms
                                                                                         {"emptyUsername", "Vul alstublieft een gebruikersnaam in." },
                                                                                         {"emptyEmail", "Vul alstublieft een email in." },
                                                                                         {"wrongPassword", "Fout password."},
-                                                                                        {"userNotExist", "Deze gebruiker bestaat niet."}
+                                                                                        {"userNotExist", "Deze gebruiker bestaat niet."},
+                                                                                        {"setFilmName", "Vul alstublieft een filmnaam in." },
+                                                                                        {"setFilmDesc", "Vul alstublieft een description in." }
                                                                                         };
 
         private IDictionary<string, string> Notifications = new Dictionary<string, string>() { 

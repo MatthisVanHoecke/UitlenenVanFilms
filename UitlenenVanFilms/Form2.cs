@@ -13,18 +13,50 @@ namespace UitlenenVanFilms
 {
     public partial class frmToevoegen : Form
     {
-        frmAdmin instance;
-
-        public frmToevoegen(frmAdmin instance)
+        private frmAdmin Ainstance;
+        private frmlog Linstance;
+        private IDictionary<string, string> Notifications;
+        private IDictionary<string, string> Errors;
+        private bool ok = true;
+        public frmToevoegen(frmAdmin Ainstance, frmlog Linstance)
         {
             InitializeComponent();
-            this.instance = instance;
+            this.Ainstance = Ainstance;
+            this.Linstance = Linstance;
+            Errors = Linstance.getErrors();
+            Notifications = Linstance.getNotifications();
         }
 
         private void BtnToevoegen_Click(object sender, EventArgs e)
         {
-            instance.setNameF(txtname.Text);
-            instance.setDescriptionF(txtdescription.Text);
+            if(txtname.Text.Equals(""))
+            {
+                MessageBox.Show(Errors["setFilmName"]);
+                ok = false;
+            }
+            if (txtdescription.Text.Equals(""))
+            {
+                MessageBox.Show(Errors["setFilmDesc"]);
+                ok = false;
+            }
+
+            if (ok)
+            {
+                this.Close();
+            }
+        }
+
+        private void FrmToevoegen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(ok)
+            {
+                Ainstance.insertFilm(txtname.Text, txtdescription.Text);
+            }
+        }
+
+        private void BtnChoose_Click(object sender, EventArgs e)
+        {
+            FileDialog dia = new FileDialog();
         }
     }
 }
