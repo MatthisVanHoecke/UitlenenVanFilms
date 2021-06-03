@@ -22,8 +22,11 @@ namespace UitlenenVanFilms
                                                                                         {"emptyEmail", "Vul alstublieft een email in." },
                                                                                         {"wrongPassword", "Fout password."},
                                                                                         {"userNotExist", "Deze gebruiker bestaat niet."},
+
                                                                                         {"setFilmName", "Vul alstublieft een filmnaam in." },
-                                                                                        {"setFilmDesc", "Vul alstublieft een description in." }
+                                                                                        {"setFilmDesc", "Vul alstublieft een description in." },
+                                                                                        {"setFile", "Selecteer alstublieft een bestand." },
+                                                                                        {"wrongFileType", "Het bestandstype moet een van de volgende types zijn: PNG, JPG, JPEG" }
                                                                                         };
 
         private IDictionary<string, string> Notifications = new Dictionary<string, string>() { 
@@ -282,6 +285,11 @@ namespace UitlenenVanFilms
                     btnRegistreren.PerformClick();
                 }
             }
+        }
+
+        private void tabInloggen_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

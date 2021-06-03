@@ -34,6 +34,9 @@
             this.lbldescription = new System.Windows.Forms.Label();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.btnChoose = new System.Windows.Forms.Button();
+            this.lblFileName = new System.Windows.Forms.Label();
+            this.pctrbxFile = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxFile)).BeginInit();
             this.SuspendLayout();
             // 
             // txtname
@@ -71,9 +74,9 @@
             // 
             // btnToevoegen
             // 
-            this.btnToevoegen.Location = new System.Drawing.Point(97, 284);
+            this.btnToevoegen.Location = new System.Drawing.Point(97, 433);
             this.btnToevoegen.Name = "btnToevoegen";
-            this.btnToevoegen.Size = new System.Drawing.Size(150, 23);
+            this.btnToevoegen.Size = new System.Drawing.Size(150, 43);
             this.btnToevoegen.TabIndex = 4;
             this.btnToevoegen.Text = "Toevoegen";
             this.btnToevoegen.UseVisualStyleBackColor = true;
@@ -83,17 +86,37 @@
             // 
             this.btnChoose.Location = new System.Drawing.Point(97, 212);
             this.btnChoose.Name = "btnChoose";
-            this.btnChoose.Size = new System.Drawing.Size(75, 23);
+            this.btnChoose.Size = new System.Drawing.Size(85, 23);
             this.btnChoose.TabIndex = 5;
-            this.btnChoose.Text = "Kies File";
+            this.btnChoose.Text = "Kies Bestand";
             this.btnChoose.UseVisualStyleBackColor = true;
             this.btnChoose.Click += new System.EventHandler(this.BtnChoose_Click);
+            // 
+            // lblFileName
+            // 
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Location = new System.Drawing.Point(188, 217);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(0, 13);
+            this.lblFileName.TabIndex = 6;
+            // 
+            // pctrbxFile
+            // 
+            this.pctrbxFile.BackColor = System.Drawing.Color.White;
+            this.pctrbxFile.Location = new System.Drawing.Point(97, 241);
+            this.pctrbxFile.Name = "pctrbxFile";
+            this.pctrbxFile.Size = new System.Drawing.Size(150, 186);
+            this.pctrbxFile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctrbxFile.TabIndex = 7;
+            this.pctrbxFile.TabStop = false;
             // 
             // frmToevoegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 377);
+            this.ClientSize = new System.Drawing.Size(361, 497);
+            this.Controls.Add(this.pctrbxFile);
+            this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnChoose);
             this.Controls.Add(this.btnToevoegen);
             this.Controls.Add(this.lbldescription);
@@ -103,6 +126,7 @@
             this.Name = "frmToevoegen";
             this.Text = "Film Toevoegen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmToevoegen_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxFile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +140,7 @@
         private System.Windows.Forms.Label lbldescription;
         private System.Windows.Forms.Button btnToevoegen;
         private System.Windows.Forms.Button btnChoose;
+        private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.PictureBox pctrbxFile;
     }
 }

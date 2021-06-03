@@ -82,6 +82,7 @@
             this.tabInloggen.TabIndex = 0;
             this.tabInloggen.Text = "Inloggen";
             this.tabInloggen.UseVisualStyleBackColor = true;
+            this.tabInloggen.Click += new System.EventHandler(this.tabInloggen_Click);
             // 
             // lblLogPasswordError
             // 

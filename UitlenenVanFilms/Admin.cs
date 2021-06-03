@@ -73,8 +73,10 @@ namespace safe
 
 
 
-        private void loadFilmList()
+        public void loadFilmList()
         {
+            lstvwFilmsAdmin.Clear();
+
             lstvwFilmsAdmin.View = View.Details;
 
             lstvwFilmsAdmin.Columns.Add("Images", 150);
@@ -200,7 +202,7 @@ namespace safe
             toevoegen.Show();
         }
 
-        public void insertFilm(string name, string desc)
+        public void insertFilm(int FilmID, string name, string desc)
         {
 
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
@@ -211,10 +213,11 @@ namespace safe
                 String opdrString;
 
 
-                opdrString = "INSERT INTO tblFilms (Name, Description) VALUES (?,?)";
+                opdrString = "INSERT INTO tblFilms (FilmID, Name, Description) VALUES (?,?,?)";
                 //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                 OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
+                opdracht2.Parameters.AddWithValue("", FilmID);
                 opdracht2.Parameters.AddWithValue("", name);
                 opdracht2.Parameters.AddWithValue("", desc);
 
