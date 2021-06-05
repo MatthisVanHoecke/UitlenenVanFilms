@@ -12,22 +12,24 @@ using UitlenenVanFilms;
 
 namespace UitlenenVanFilms
 {
-    public partial class frmfilms : Form
+    public partial class frmUser : Form
     {
-        private frmlog instance;
+        private frmLog instance;
         private string user = "";
         private List<int> changedRows = new List<int>();
         private List<int> changedPass = new List<int>();
         private List<int> deletedRows = new List<int>();
         private IDictionary<string, string> Notifications;
         private IDictionary<string, string> Errors;
-        public frmfilms(frmlog instance, string user)
+        private frmAdmin admin;
+        public frmUser(frmLog instance, string user, frmAdmin admin)
         {
             InitializeComponent();
             this.instance = instance;
             this.user = user;
             Notifications = instance.getNotifications();
             Errors = instance.getErrors();
+            this.admin = admin;
         }
 
         private void Frmfilms_FormClosed(object sender, FormClosedEventArgs e)
@@ -47,6 +49,8 @@ namespace UitlenenVanFilms
 
         private void frmfilms_Load(object sender, EventArgs e)
         {
+            lstvwFilmsUser = admin.loadFilmList(lstvwFilmsUser);
+            lstvwFilmsUser.Columns.Remove(lstvwFilmsUser.Columns[1]);
             loadDataGrid();
             lblwelkom.Text = "Welkom, " + user;
         }
@@ -158,6 +162,16 @@ namespace UitlenenVanFilms
                 dgvUser.Rows[e.RowIndex].Cells[0].ReadOnly = true;
                 dgvUser.Rows[e.RowIndex].Cells[3].ReadOnly = true;
             }
+        }
+
+        private void lstvwFilmsAdmin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRent_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

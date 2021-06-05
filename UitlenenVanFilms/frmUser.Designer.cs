@@ -1,6 +1,6 @@
 ﻿namespace UitlenenVanFilms
 {
-    partial class frmfilms
+    partial class frmUser
     {
         /// <summary>
         /// Required designer variable.
@@ -32,12 +32,15 @@
             this.home = new System.Windows.Forms.TabPage();
             this.lblwelkom = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lstvwFilmsUser = new System.Windows.Forms.ListView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnSave = new System.Windows.Forms.Button();
             this.dgvUser = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRent = new System.Windows.Forms.Button();
             this.tabControlHome.SuspendLayout();
             this.home.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +81,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnRent);
+            this.tabPage2.Controls.Add(this.lstvwFilmsUser);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -85,6 +90,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "overzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lstvwFilmsUser
+            // 
+            this.lstvwFilmsUser.AllowColumnReorder = true;
+            this.lstvwFilmsUser.FullRowSelect = true;
+            this.lstvwFilmsUser.HideSelection = false;
+            this.lstvwFilmsUser.Location = new System.Drawing.Point(7, 6);
+            this.lstvwFilmsUser.Name = "lstvwFilmsUser";
+            this.lstvwFilmsUser.Size = new System.Drawing.Size(776, 370);
+            this.lstvwFilmsUser.TabIndex = 4;
+            this.lstvwFilmsUser.UseCompatibleStateImageBehavior = false;
+            this.lstvwFilmsUser.SelectedIndexChanged += new System.EventHandler(this.lstvwFilmsAdmin_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -98,26 +115,6 @@
             this.tabPage3.Text = "Mijn account";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(790, 426);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "instellingen";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(20, 338);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(96, 34);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
             // dgvUser
             // 
             this.dgvUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -129,13 +126,43 @@
             this.dgvUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick_1);
             this.dgvUser.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvUser_CellValueChanged);
             // 
-            // frmfilms
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(20, 338);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(96, 34);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(790, 426);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "instellingen";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnRent
+            // 
+            this.btnRent.Location = new System.Drawing.Point(7, 382);
+            this.btnRent.Name = "btnRent";
+            this.btnRent.Size = new System.Drawing.Size(106, 35);
+            this.btnRent.TabIndex = 5;
+            this.btnRent.Text = "Huren";
+            this.btnRent.UseVisualStyleBackColor = true;
+            this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
+            // 
+            // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControlHome);
-            this.Name = "frmfilms";
+            this.Name = "frmUser";
             this.Text = "Films uitlenen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmfilms_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frmfilms_FormClosed);
@@ -143,6 +170,7 @@
             this.tabControlHome.ResumeLayout(false);
             this.home.ResumeLayout(false);
             this.home.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).EndInit();
             this.ResumeLayout(false);
@@ -159,6 +187,8 @@
         private System.Windows.Forms.Label lblwelkom;
         private System.Windows.Forms.DataGridView dgvUser;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.ListView lstvwFilmsUser;
+        private System.Windows.Forms.Button btnRent;
     }
 }
 

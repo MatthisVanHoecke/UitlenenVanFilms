@@ -13,13 +13,13 @@ namespace UitlenenVanFilms
 {
     public partial class frmWijzig : Form
     {
-        private frmlog Linstance;
+        private frmLog Linstance;
         private frmAdmin Ainstance;
         private int FilmID;
         private IDictionary<string, string> Errors;
         private bool ok = true, close = false;
-        private Image image;
-        public frmWijzig(int FilmID, string name, string desc, frmAdmin Ainstance, frmlog Linstance)
+        private Image image, image2;
+        public frmWijzig(int FilmID, string name, string desc, bool available, frmAdmin Ainstance, frmLog Linstance)
         {
             InitializeComponent();
             this.Ainstance = Ainstance;
@@ -31,6 +31,8 @@ namespace UitlenenVanFilms
             txtdescription.Text = desc;
             image = Image.FromFile("../Images/" + FilmID + ".png");
             pctrbxFile.Image = image;
+
+            chckbxAvailable.Checked = available;
         }
 
         private void frmWijzig_FormClosing(object sender, FormClosingEventArgs e)
@@ -38,7 +40,11 @@ namespace UitlenenVanFilms
             if (close)
             {
                 image.Dispose();
-                Ainstance.updateFilm(FilmID, txtname.Text, txtdescription.Text, lblFileName.Text);
+                if(image2 != null)
+                {
+                    image2.Dispose();
+                }
+                Ainstance.updateFilm(FilmID, txtname.Text, txtdescription.Text, lblFileName.Text, chckbxAvailable.Checked);
             }
         }
 
@@ -59,7 +65,8 @@ namespace UitlenenVanFilms
                 else
                 {
                     lblFileName.Text = openFileDialog.FileName;
-                    pctrbxFile.Image = Image.FromFile(openFileDialog.FileName);
+                    image2 = Image.FromFile(openFileDialog.FileName);
+                    pctrbxFile.Image = image2;
                 }
             }
         }
@@ -71,15 +78,18 @@ namespace UitlenenVanFilms
                 MessageBox.Show(Errors["setFilmName"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ok = false;
             }
+            else
+            {
+                ok = true;
+            }
             if (txtdescription.Text.Equals(""))
             {
                 MessageBox.Show(Errors["setFilmDesc"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ok = false;
             }
-            if (lblFileName.Text.Equals(""))
+            else
             {
-                MessageBox.Show(Errors["setFile"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ok = false;
+                ok = true;
             }
 
             if (ok)

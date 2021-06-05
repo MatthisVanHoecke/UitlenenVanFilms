@@ -60,7 +60,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 476);
+            this.tabPage1.Size = new System.Drawing.Size(792, 428);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin Home";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 476);
+            this.tabPage2.Size = new System.Drawing.Size(792, 428);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Users";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -114,6 +114,7 @@
             // lstvwFilmsAdmin
             // 
             this.lstvwFilmsAdmin.AllowColumnReorder = true;
+            this.lstvwFilmsAdmin.FullRowSelect = true;
             this.lstvwFilmsAdmin.HideSelection = false;
             this.lstvwFilmsAdmin.Location = new System.Drawing.Point(8, 67);
             this.lstvwFilmsAdmin.Name = "lstvwFilmsAdmin";
@@ -139,7 +140,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(792, 476);
+            this.tabPage4.Size = new System.Drawing.Size(792, 428);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Ontleningen";
             this.tabPage4.UseVisualStyleBackColor = true;

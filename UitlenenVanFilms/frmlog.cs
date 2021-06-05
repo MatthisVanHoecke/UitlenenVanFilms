@@ -6,11 +6,12 @@ using System.Windows.Forms;
 
 namespace UitlenenVanFilms
 {
-    public partial class frmlog : Form
+    public partial class frmLog : Form
     {
-        public frmlog()
+        public frmLog()
         {
             InitializeComponent();
+            admin1 = new frmAdmin(this, txtUserLogin.Text);
         }
 
         private IDictionary<string, string> Errors = new Dictionary<string, string>() {
@@ -33,8 +34,15 @@ namespace UitlenenVanFilms
                                                                                         {"changesSaved", "Wijzigingen zijn opgeslaan."},
                                                                                         {"deleteVerify", "Bent u zeker dat u deze films wilt verwijderen?" },
 
-                                                                                        {"Warning", "Waarschuwing" }
+                                                                                        {"Warning", "Waarschuwing" },
+                                                                                        {"Film", "Film" },
+                                                                                        {"Description", "Beschrijving" },
+                                                                                        {"Available", "Beschikbaar" },
+                                                                                        {"Name", "Naam" }
                                                                                         };
+
+        private frmUser user;
+        private frmAdmin admin1;
 
         public IDictionary<string, string> getNotifications()
         {
@@ -224,14 +232,13 @@ namespace UitlenenVanFilms
 
                         if (ok && admin)
                         {
-                            frmAdmin form = new frmAdmin(this, txtUserLogin.Text);
-                            form.Show();
+                            admin1.Show();
                             this.Hide();
                         }
                         else
                         {
-                            frmfilms form = new frmfilms(this, txtUserLogin.Text);
-                            form.Show();
+                            user = new frmUser(this, txtUserLogin.Text, admin1);
+                            user.Show();
                             this.Hide();
                         }
                     }

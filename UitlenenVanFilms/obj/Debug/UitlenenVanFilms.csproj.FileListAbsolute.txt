@@ -35,5 +35,5 @@ C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVan
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmAdmin.resources
-D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmfilms.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmUser.resources

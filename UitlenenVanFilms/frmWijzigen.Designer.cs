@@ -37,13 +37,14 @@ namespace UitlenenVanFilms
             this.lblname = new System.Windows.Forms.Label();
             this.txtdescription = new System.Windows.Forms.TextBox();
             this.txtname = new System.Windows.Forms.TextBox();
+            this.chckbxAvailable = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxFile)).BeginInit();
             this.SuspendLayout();
             // 
             // pctrbxFile
             // 
             this.pctrbxFile.BackColor = System.Drawing.Color.White;
-            this.pctrbxFile.Location = new System.Drawing.Point(102, 240);
+            this.pctrbxFile.Location = new System.Drawing.Point(102, 268);
             this.pctrbxFile.Name = "pctrbxFile";
             this.pctrbxFile.Size = new System.Drawing.Size(150, 186);
             this.pctrbxFile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -60,7 +61,7 @@ namespace UitlenenVanFilms
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(102, 211);
+            this.btnChoose.Location = new System.Drawing.Point(102, 239);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(85, 23);
             this.btnChoose.TabIndex = 13;
@@ -70,9 +71,9 @@ namespace UitlenenVanFilms
             // 
             // btnWijzigen
             // 
-            this.btnWijzigen.Location = new System.Drawing.Point(102, 432);
+            this.btnWijzigen.Location = new System.Drawing.Point(77, 460);
             this.btnWijzigen.Name = "btnWijzigen";
-            this.btnWijzigen.Size = new System.Drawing.Size(150, 43);
+            this.btnWijzigen.Size = new System.Drawing.Size(206, 43);
             this.btnWijzigen.TabIndex = 12;
             this.btnWijzigen.Text = "Wijzig";
             this.btnWijzigen.UseVisualStyleBackColor = true;
@@ -111,11 +112,24 @@ namespace UitlenenVanFilms
             this.txtname.Size = new System.Drawing.Size(223, 20);
             this.txtname.TabIndex = 8;
             // 
+            // chckbxAvailable
+            // 
+            this.chckbxAvailable.AutoSize = true;
+            this.chckbxAvailable.Checked = true;
+            this.chckbxAvailable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chckbxAvailable.Location = new System.Drawing.Point(102, 216);
+            this.chckbxAvailable.Name = "chckbxAvailable";
+            this.chckbxAvailable.Size = new System.Drawing.Size(85, 17);
+            this.chckbxAvailable.TabIndex = 16;
+            this.chckbxAvailable.Text = "Beschikbaar";
+            this.chckbxAvailable.UseVisualStyleBackColor = true;
+            // 
             // frmWijzig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 489);
+            this.ClientSize = new System.Drawing.Size(358, 523);
+            this.Controls.Add(this.chckbxAvailable);
             this.Controls.Add(this.pctrbxFile);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnChoose);
@@ -144,5 +158,6 @@ namespace UitlenenVanFilms
         private System.Windows.Forms.Label lblname;
         private System.Windows.Forms.TextBox txtdescription;
         private System.Windows.Forms.TextBox txtname;
+        private System.Windows.Forms.CheckBox chckbxAvailable;
     }
 }

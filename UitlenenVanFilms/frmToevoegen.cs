@@ -15,12 +15,12 @@ namespace UitlenenVanFilms
     public partial class frmToevoegen : Form
     {
         private frmAdmin Ainstance;
-        private frmlog Linstance;
+        private frmLog Linstance;
         private IDictionary<string, string> Notifications;
         private IDictionary<string, string> Errors;
         private bool ok = true, close = false;
         private int FilmID = 0;
-        public frmToevoegen(frmAdmin Ainstance, frmlog Linstance)
+        public frmToevoegen(frmAdmin Ainstance, frmLog Linstance)
         {
             InitializeComponent();
             this.Ainstance = Ainstance;
@@ -36,15 +36,27 @@ namespace UitlenenVanFilms
                 MessageBox.Show(Errors["setFilmName"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ok = false;
             }
+            else
+            {
+                ok = true;
+            }
             if (txtdescription.Text.Equals(""))
             {
                 MessageBox.Show(Errors["setFilmDesc"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ok = false;
             }
-            if(lblFileName.Text.Equals(""))
+            else
+            {
+                ok = true;
+            }
+            if (lblFileName.Text.Equals(""))
             {
                 MessageBox.Show(Errors["setFile"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ok = false;
+            }
+            else
+            {
+                ok = true;
             }
 
             if (ok)
@@ -86,6 +98,11 @@ namespace UitlenenVanFilms
             {
                 Ainstance.insertFilm(FilmID, txtname.Text, txtdescription.Text, lblFileName.Text);
             }
+        }
+
+        private void txtname_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void BtnChoose_Click(object sender, EventArgs e)

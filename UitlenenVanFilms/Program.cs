@@ -16,7 +16,7 @@ namespace UitlenenVanFilms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmlog());
+            Application.Run(new frmLog());
         }
     }
 }

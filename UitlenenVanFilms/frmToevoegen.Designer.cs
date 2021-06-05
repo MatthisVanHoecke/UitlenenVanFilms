@@ -36,6 +36,7 @@
             this.btnChoose = new System.Windows.Forms.Button();
             this.lblFileName = new System.Windows.Forms.Label();
             this.pctrbxFile = new System.Windows.Forms.PictureBox();
+            this.chckbxAvailable = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxFile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,6 +46,7 @@
             this.txtname.Name = "txtname";
             this.txtname.Size = new System.Drawing.Size(223, 20);
             this.txtname.TabIndex = 0;
+            this.txtname.TextChanged += new System.EventHandler(this.txtname_TextChanged);
             // 
             // txtdescription
             // 
@@ -74,9 +76,9 @@
             // 
             // btnToevoegen
             // 
-            this.btnToevoegen.Location = new System.Drawing.Point(97, 433);
+            this.btnToevoegen.Location = new System.Drawing.Point(59, 456);
             this.btnToevoegen.Name = "btnToevoegen";
-            this.btnToevoegen.Size = new System.Drawing.Size(150, 43);
+            this.btnToevoegen.Size = new System.Drawing.Size(235, 43);
             this.btnToevoegen.TabIndex = 4;
             this.btnToevoegen.Text = "Toevoegen";
             this.btnToevoegen.UseVisualStyleBackColor = true;
@@ -84,7 +86,7 @@
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(97, 212);
+            this.btnChoose.Location = new System.Drawing.Point(97, 235);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(85, 23);
             this.btnChoose.TabIndex = 5;
@@ -103,18 +105,32 @@
             // pctrbxFile
             // 
             this.pctrbxFile.BackColor = System.Drawing.Color.White;
-            this.pctrbxFile.Location = new System.Drawing.Point(97, 241);
+            this.pctrbxFile.Location = new System.Drawing.Point(97, 264);
             this.pctrbxFile.Name = "pctrbxFile";
             this.pctrbxFile.Size = new System.Drawing.Size(150, 186);
             this.pctrbxFile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctrbxFile.TabIndex = 7;
             this.pctrbxFile.TabStop = false;
             // 
+            // chckbxAvailable
+            // 
+            this.chckbxAvailable.AutoSize = true;
+            this.chckbxAvailable.Checked = true;
+            this.chckbxAvailable.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chckbxAvailable.Enabled = false;
+            this.chckbxAvailable.Location = new System.Drawing.Point(97, 212);
+            this.chckbxAvailable.Name = "chckbxAvailable";
+            this.chckbxAvailable.Size = new System.Drawing.Size(85, 17);
+            this.chckbxAvailable.TabIndex = 8;
+            this.chckbxAvailable.Text = "Beschikbaar";
+            this.chckbxAvailable.UseVisualStyleBackColor = true;
+            // 
             // frmToevoegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 497);
+            this.ClientSize = new System.Drawing.Size(361, 521);
+            this.Controls.Add(this.chckbxAvailable);
             this.Controls.Add(this.pctrbxFile);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnChoose);
@@ -142,5 +158,6 @@
         private System.Windows.Forms.Button btnChoose;
         private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.PictureBox pctrbxFile;
+        private System.Windows.Forms.CheckBox chckbxAvailable;
     }
 }

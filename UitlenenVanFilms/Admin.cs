@@ -15,7 +15,7 @@ namespace UitlenenVanFilms
 {
     public partial class frmAdmin : Form
     {
-        private frmlog instance;
+        private frmLog instance;
         private List<int> changedRows = new List<int>();
         private List<int> changedPass = new List<int>();
         private List<int> deletedRows = new List<int>();
@@ -24,9 +24,10 @@ namespace UitlenenVanFilms
         private string user = "";
         private int SelectedIndex = 0;
         private List<IDictionary<string, string>> filmitems = new List<IDictionary<string, string>>();
-        ImageList imgs;
+        private ImageList imgs;
+        private List<string> paths = new List<string>();
 
-        public frmAdmin(frmlog instance, string user)
+        public frmAdmin(frmLog instance, string user)
         {
             InitializeComponent();
             this.instance = instance;
@@ -37,7 +38,7 @@ namespace UitlenenVanFilms
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
-            loadFilmList();
+            loadFilmList(lstvwFilmsAdmin);
             loadDataGrid();
         }
 
@@ -72,20 +73,52 @@ namespace UitlenenVanFilms
             }
         }
 
-        public void loadFilmList()
+        public void createImageList(ListView view)
         {
-            lstvwFilmsAdmin.Clear();
+            view.Clear();
 
-            lstvwFilmsAdmin.View = View.Details;
+            view.View = View.Details;
 
-            lstvwFilmsAdmin.Columns.Add("Images", 150);
-            lstvwFilmsAdmin.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
+            view.Columns.Add(Notifications["Film"]);
+            view.Columns.Add("ID");
+            view.Columns.Add(Notifications["Description"]);
+            view.Columns.Add(Notifications["Available"]);
+
+            view.Columns[0].DisplayIndex = 1;
+
+            view.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
 
             imgs = new ImageList();
             imgs.ImageSize = new Size(100, 148);
 
-            string[] paths = { };
-            paths = Directory.GetFiles(Directory.GetParent(Directory.GetCurrentDirectory()) + "/Images");
+            paths.Clear();
+            paths = Directory.GetFiles(Directory.GetParent(Directory.GetCurrentDirectory()) + "/Images").ToList<string>();
+
+            view.SmallImageList = imgs;
+
+            for (int i = 0; i < paths.Count; i++)
+            {
+                var image = Image.FromFile("../Images/" + filmitems[i]["FilmID"] + ".png");
+                imgs.Images.Add(image);
+                view.Items.Add(filmitems[i]["Name"], i).ImageIndex = i;
+                view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["FilmID"]);
+                view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Description"]);
+                view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Available"]);
+                
+                image.Dispose();
+            }
+
+            view.Columns[0].Width = 300;
+            view.Columns[1].Width = 30;
+            view.Columns[2].Width = 300;
+            view.Columns[3].Width = 80;
+
+            view.Columns[1].TextAlign = HorizontalAlignment.Center;
+            view.Columns[3].TextAlign = HorizontalAlignment.Center;
+        }
+
+        public ListView loadFilmList(ListView view)
+        {
 
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -102,7 +135,7 @@ namespace UitlenenVanFilms
 
                 while (dataLezer.Read())
                 {
-                    filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() } });
+                    filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() } });
                 }
             }
             catch (Exception ex)
@@ -114,15 +147,9 @@ namespace UitlenenVanFilms
                 verbinding.Close();
             }
 
-            lstvwFilmsAdmin.SmallImageList = imgs;
+            createImageList(view);
 
-            for (int i = 0; i < paths.Length; i++)
-            {
-                var image = Image.FromFile("../Images/" + filmitems[i]["FilmID"] + ".png");
-                imgs.Images.Add(image);
-                lstvwFilmsAdmin.Items.Add(filmitems[i]["Description"], i);
-                image.Dispose();
-            }
+            return view;
         }
 
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
@@ -237,11 +264,11 @@ namespace UitlenenVanFilms
             var image = Image.FromFile(path);
             imgs.Images.Add(image);
             lstvwFilmsAdmin.Items.Add(desc, lstvwFilmsAdmin.Items.Count);
-            filmitems.Add(new Dictionary<string, string>() { { "FilmID", FilmID.ToString() }, { "Name", name }, { "Description", desc } });
+            filmitems.Add(new Dictionary<string, string>() { { "FilmID", FilmID.ToString() }, { "Name", name }, { "Description", desc }, { "Available", "true" } });
             image.Dispose();
         }
 
-        public void updateFilm(int FilmID, string name, string desc, string path)
+        public void updateFilm(int FilmID, string name, string desc, string path, bool available)
         {
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -251,12 +278,13 @@ namespace UitlenenVanFilms
                 String opdrString;
 
 
-                opdrString = "UPDATE tblFilms SET Name = ?, Description = ? WHERE FilmID = ?";
+                opdrString = "UPDATE tblFilms SET Name = ?, Description = ?, Available = ? WHERE FilmID = ?";
                 //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                 OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
                 opdracht2.Parameters.AddWithValue("", name);
                 opdracht2.Parameters.AddWithValue("", desc);
+                opdracht2.Parameters.AddWithValue("", available);
                 opdracht2.Parameters.AddWithValue("", FilmID);
 
                 opdracht2.ExecuteNonQuery();
@@ -271,10 +299,17 @@ namespace UitlenenVanFilms
                 verbinding.Close();
             }
 
-            File.Delete("../Images/" + FilmID + ".png");
-            File.Copy(path, "../Images/" + FilmID + ".png");
+            if(!path.Equals(""))
+            {
+                File.Delete("../Images/" + FilmID + ".png");
+                File.Copy(path, "../Images/" + FilmID + ".png");
+            }
 
-            loadFilmList();
+            filmitems[SelectedIndex]["Description"] = desc;
+            filmitems[SelectedIndex]["Name"] = name;
+            filmitems[SelectedIndex]["Available"] = available.ToString();
+
+            createImageList(lstvwFilmsAdmin);
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -306,7 +341,7 @@ namespace UitlenenVanFilms
             if(lstvwFilmsAdmin.SelectedItems.Count == 1)
             {
                 int index = lstvwFilmsAdmin.SelectedItems[0].Index;
-                frmWijzig wijzig = new frmWijzig(Convert.ToInt32(filmitems[index]["FilmID"]), filmitems[index]["Name"], filmitems[index]["Description"], this, instance);
+                frmWijzig wijzig = new frmWijzig(Convert.ToInt32(filmitems[index]["FilmID"]), filmitems[index]["Name"], filmitems[index]["Description"], Convert.ToBoolean(filmitems[index]["Available"]), this, instance);
                 wijzig.Show();
 
                 SelectedIndex = index;
@@ -359,7 +394,7 @@ namespace UitlenenVanFilms
                         {
                             verbinding.Close();
                         }
-                        loadFilmList();
+                        loadFilmList(lstvwFilmsAdmin);
                     }
                 }
             }

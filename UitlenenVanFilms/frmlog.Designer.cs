@@ -1,6 +1,6 @@
 ﻿namespace UitlenenVanFilms
 {
-    partial class frmlog
+    partial class frmLog
     {
         /// <summary>
         /// Required designer variable.
@@ -277,14 +277,14 @@
             this.txtCreateUser.TabIndex = 5;
             this.txtCreateUser.TextChanged += new System.EventHandler(this.TxtCreateUser_TextChanged);
             // 
-            // frmlog
+            // frmLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControlStart);
             this.KeyPreview = true;
-            this.Name = "frmlog";
+            this.Name = "frmLog";
             this.Text = "Films uitlenen";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frmlog_FormClosed);
             this.Load += new System.EventHandler(this.Frmlog_Load);
