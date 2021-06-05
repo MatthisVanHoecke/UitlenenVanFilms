@@ -1,5 +1,4 @@
-﻿using safe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -85,8 +84,7 @@ namespace UitlenenVanFilms
         {
             if(close)
             {
-                Ainstance.insertFilm(FilmID, txtname.Text, txtdescription.Text);
-                Ainstance.loadFilmList();
+                Ainstance.insertFilm(FilmID, txtname.Text, txtdescription.Text, lblFileName.Text);
             }
         }
 

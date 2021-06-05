@@ -18,8 +18,6 @@ D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\Uitlene
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
-D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmAdmin.resources
-D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmfilms.resources
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe.config
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.pdb
@@ -36,3 +34,6 @@ C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVan
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmfilms.resources
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmAdmin.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmfilms.resources
+D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources

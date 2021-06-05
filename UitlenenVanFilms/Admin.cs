@@ -9,10 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UitlenenVanFilms;
 using Microsoft.VisualBasic;
 
-namespace safe
+namespace UitlenenVanFilms
 {
     public partial class frmAdmin : Form
     {
@@ -23,7 +22,9 @@ namespace safe
         private IDictionary<string, string> Notifications;
         private IDictionary<string, string> Errors;
         private string user = "";
-        private List<List<string>> filmitems = new List<List<string>>();
+        private int SelectedIndex = 0;
+        private List<IDictionary<string, string>> filmitems = new List<IDictionary<string, string>>();
+        ImageList imgs;
 
         public frmAdmin(frmlog instance, string user)
         {
@@ -71,8 +72,6 @@ namespace safe
             }
         }
 
-
-
         public void loadFilmList()
         {
             lstvwFilmsAdmin.Clear();
@@ -82,7 +81,7 @@ namespace safe
             lstvwFilmsAdmin.Columns.Add("Images", 150);
             lstvwFilmsAdmin.AutoResizeColumn(0, ColumnHeaderAutoResizeStyle.HeaderSize);
 
-            ImageList imgs = new ImageList();
+            imgs = new ImageList();
             imgs.ImageSize = new Size(100, 148);
 
             string[] paths = { };
@@ -103,7 +102,7 @@ namespace safe
 
                 while (dataLezer.Read())
                 {
-                    filmitems.Add(new List<string>() {dataLezer.GetValue(0).ToString(), dataLezer.GetValue(1).ToString(), dataLezer.GetValue(2).ToString(), dataLezer.GetValue(3).ToString() });
+                    filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() } });
                 }
             }
             catch (Exception ex)
@@ -115,13 +114,15 @@ namespace safe
                 verbinding.Close();
             }
 
+            lstvwFilmsAdmin.SmallImageList = imgs;
+
             for (int i = 0; i < paths.Length; i++)
             {
-                imgs.Images.Add(Image.FromFile(paths[i]));
-                lstvwFilmsAdmin.Items.Add(filmitems[i][2], i);
+                var image = Image.FromFile("../Images/" + filmitems[i]["FilmID"] + ".png");
+                imgs.Images.Add(image);
+                lstvwFilmsAdmin.Items.Add(filmitems[i]["Description"], i);
+                image.Dispose();
             }
-
-            lstvwFilmsAdmin.SmallImageList = imgs;
         }
 
         private void frmAdmin_FormClosing(object sender, FormClosingEventArgs e)
@@ -202,7 +203,7 @@ namespace safe
             toevoegen.Show();
         }
 
-        public void insertFilm(int FilmID, string name, string desc)
+        public void insertFilm(int FilmID, string name, string desc, string path)
         {
 
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
@@ -232,6 +233,48 @@ namespace safe
             {
                 verbinding.Close();
             }
+
+            var image = Image.FromFile(path);
+            imgs.Images.Add(image);
+            lstvwFilmsAdmin.Items.Add(desc, lstvwFilmsAdmin.Items.Count);
+            filmitems.Add(new Dictionary<string, string>() { { "FilmID", FilmID.ToString() }, { "Name", name }, { "Description", desc } });
+            image.Dispose();
+        }
+
+        public void updateFilm(int FilmID, string name, string desc, string path)
+        {
+            String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
+            OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
+            verbinding.Open();
+            try
+            {
+                String opdrString;
+
+
+                opdrString = "UPDATE tblFilms SET Name = ?, Description = ? WHERE FilmID = ?";
+                //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
+                OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
+
+                opdracht2.Parameters.AddWithValue("", name);
+                opdracht2.Parameters.AddWithValue("", desc);
+                opdracht2.Parameters.AddWithValue("", FilmID);
+
+                opdracht2.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Errors["tableError"] + ex);
+            }
+            finally
+            {
+                verbinding.Close();
+            }
+
+            File.Delete("../Images/" + FilmID + ".png");
+            File.Copy(path, "../Images/" + FilmID + ".png");
+
+            loadFilmList();
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -251,6 +294,79 @@ namespace safe
         private void LstvwFilmsAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVerwijderen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstvwFilmsAdmin_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if(lstvwFilmsAdmin.SelectedItems.Count == 1)
+            {
+                int index = lstvwFilmsAdmin.SelectedItems[0].Index;
+                frmWijzig wijzig = new frmWijzig(Convert.ToInt32(filmitems[index]["FilmID"]), filmitems[index]["Name"], filmitems[index]["Description"], this, instance);
+                wijzig.Show();
+
+                SelectedIndex = index;
+            }
+        }
+
+        private void lstvwFilmsAdmin_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString().ToLower().Equals("delete"))
+            {
+                if (lstvwFilmsAdmin.SelectedItems.Count > 0)
+                {
+                    string deleteItems = "";
+                    for (int i = 0; i < lstvwFilmsAdmin.SelectedItems.Count; i++)
+                    {
+                        int index = lstvwFilmsAdmin.SelectedItems[i].Index;
+                        deleteItems += (filmitems[index]["Name"] + "\n");
+                    }
+                    DialogResult result = MessageBox.Show(Notifications["deleteVerify"], Notifications["Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if(result == DialogResult.Yes)
+                    {
+                        String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
+                        OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
+                        verbinding.Open();
+                        try
+                        {
+
+                            string opdrString = "DELETE FROM tblFilms WHERE FilmID = ?";
+                            OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
+
+                            for(int i = 0; i < lstvwFilmsAdmin.SelectedItems.Count; i++)
+                            {
+                                int index = lstvwFilmsAdmin.SelectedItems[i].Index;
+                                opdracht.Parameters.AddWithValue("", filmitems[index]["FilmID"]);
+
+                                opdracht.ExecuteNonQuery();
+
+                                File.Delete("../Images/" + filmitems[index]["FilmID"] + ".png");
+
+                                lstvwFilmsAdmin.Items.RemoveAt(index);
+                                filmitems.RemoveAt(index);
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+                        finally
+                        {
+                            verbinding.Close();
+                        }
+                        loadFilmList();
+                    }
+                }
+            }
+        }
+
+        private void btnSaveFilms_Click(object sender, EventArgs e)
+        {
         }
     }
 }

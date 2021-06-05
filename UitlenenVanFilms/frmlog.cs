@@ -1,5 +1,4 @@
-﻿using safe;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -14,7 +13,8 @@ namespace UitlenenVanFilms
             InitializeComponent();
         }
 
-        private IDictionary<string, string> Errors = new Dictionary<string, string>() { {"userExists", "Deze gebruiker bestaat al."}, 
+        private IDictionary<string, string> Errors = new Dictionary<string, string>() {
+                                                                                        {"userExists", "Deze gebruiker bestaat al."}, 
                                                                                         {"tableError", "Problemen bij het vullen van de tabel. "},
                                                                                         {"emptyPassword", "Vul alstublieft een wachtwoord in."},
                                                                                         {"passwordNotMatch", "De wachtwoorden komen niet overeen."},
@@ -30,8 +30,10 @@ namespace UitlenenVanFilms
                                                                                         };
 
         private IDictionary<string, string> Notifications = new Dictionary<string, string>() { 
-                                                                                        {"changesSaved", "Wijzigingen zijn opgeslaan."}
+                                                                                        {"changesSaved", "Wijzigingen zijn opgeslaan."},
+                                                                                        {"deleteVerify", "Bent u zeker dat u deze films wilt verwijderen?" },
 
+                                                                                        {"Warning", "Waarschuwing" }
                                                                                         };
 
         public IDictionary<string, string> getNotifications()

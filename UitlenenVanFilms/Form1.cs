@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UitlenenVanFilms;
 
-namespace safe
+namespace UitlenenVanFilms
 {
     public partial class frmfilms : Form
     {

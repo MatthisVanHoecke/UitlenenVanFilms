@@ -1,4 +1,4 @@
-﻿namespace safe
+﻿namespace UitlenenVanFilms
 {
     partial class frmAdmin
     {
@@ -35,8 +35,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lstvwFilmsAdmin = new System.Windows.Forms.ListView();
-            this.btnVerwijderen = new System.Windows.Forms.Button();
-            this.btnWijzigen = new System.Windows.Forms.Button();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
@@ -54,7 +52,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(800, 452);
+            this.tabControl1.Size = new System.Drawing.Size(800, 454);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -62,7 +60,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(792, 426);
+            this.tabPage1.Size = new System.Drawing.Size(792, 476);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin Home";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -74,7 +72,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 426);
+            this.tabPage2.Size = new System.Drawing.Size(792, 476);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Users";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -85,7 +83,7 @@
             this.btnSaveDatagrid.Name = "btnSaveDatagrid";
             this.btnSaveDatagrid.Size = new System.Drawing.Size(75, 23);
             this.btnSaveDatagrid.TabIndex = 1;
-            this.btnSaveDatagrid.Text = "Save";
+            this.btnSaveDatagrid.Text = "Opslaan";
             this.btnSaveDatagrid.UseVisualStyleBackColor = true;
             this.btnSaveDatagrid.Click += new System.EventHandler(this.btnSaveDatagrid_Click);
             // 
@@ -104,13 +102,11 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.lstvwFilmsAdmin);
-            this.tabPage3.Controls.Add(this.btnVerwijderen);
-            this.tabPage3.Controls.Add(this.btnWijzigen);
             this.tabPage3.Controls.Add(this.btnToevoegen);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(792, 426);
+            this.tabPage3.Size = new System.Drawing.Size(792, 428);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Films";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -125,28 +121,12 @@
             this.lstvwFilmsAdmin.TabIndex = 3;
             this.lstvwFilmsAdmin.UseCompatibleStateImageBehavior = false;
             this.lstvwFilmsAdmin.SelectedIndexChanged += new System.EventHandler(this.LstvwFilmsAdmin_SelectedIndexChanged);
-            // 
-            // btnVerwijderen
-            // 
-            this.btnVerwijderen.Location = new System.Drawing.Point(343, 38);
-            this.btnVerwijderen.Name = "btnVerwijderen";
-            this.btnVerwijderen.Size = new System.Drawing.Size(75, 23);
-            this.btnVerwijderen.TabIndex = 2;
-            this.btnVerwijderen.Text = "Verwijderen";
-            this.btnVerwijderen.UseVisualStyleBackColor = true;
-            // 
-            // btnWijzigen
-            // 
-            this.btnWijzigen.Location = new System.Drawing.Point(262, 38);
-            this.btnWijzigen.Name = "btnWijzigen";
-            this.btnWijzigen.Size = new System.Drawing.Size(75, 23);
-            this.btnWijzigen.TabIndex = 1;
-            this.btnWijzigen.Text = "Wijzigen";
-            this.btnWijzigen.UseVisualStyleBackColor = true;
+            this.lstvwFilmsAdmin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.lstvwFilmsAdmin_KeyUp);
+            this.lstvwFilmsAdmin.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lstvwFilmsAdmin_MouseDoubleClick);
             // 
             // btnToevoegen
             // 
-            this.btnToevoegen.Location = new System.Drawing.Point(181, 38);
+            this.btnToevoegen.Location = new System.Drawing.Point(8, 38);
             this.btnToevoegen.Name = "btnToevoegen";
             this.btnToevoegen.Size = new System.Drawing.Size(75, 23);
             this.btnToevoegen.TabIndex = 0;
@@ -159,7 +139,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(792, 426);
+            this.tabPage4.Size = new System.Drawing.Size(792, 476);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Ontleningen";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -168,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 462);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmAdmin";
             this.Text = "Admin";
@@ -190,8 +170,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ListView lstvwFilmsAdmin;
-        private System.Windows.Forms.Button btnVerwijderen;
-        private System.Windows.Forms.Button btnWijzigen;
         private System.Windows.Forms.Button btnToevoegen;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnSaveDatagrid;
