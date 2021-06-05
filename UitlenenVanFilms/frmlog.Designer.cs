@@ -288,7 +288,7 @@
             this.Text = "Films uitlenen";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frmlog_FormClosed);
             this.Load += new System.EventHandler(this.Frmlog_Load);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmlog_KeyUp);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLog_KeyDown);
             this.tabControlStart.ResumeLayout(false);
             this.tabInloggen.ResumeLayout(false);
             this.tabInloggen.PerformLayout();

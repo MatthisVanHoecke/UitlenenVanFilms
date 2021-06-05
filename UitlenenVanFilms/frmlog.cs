@@ -11,8 +11,9 @@ namespace UitlenenVanFilms
         public frmLog()
         {
             InitializeComponent();
-            admin1 = new frmAdmin(this, txtUserLogin.Text);
         }
+
+        private int customerid = 0;
 
         private IDictionary<string, string> Errors = new Dictionary<string, string>() {
                                                                                         {"userExists", "Deze gebruiker bestaat al."}, 
@@ -27,7 +28,8 @@ namespace UitlenenVanFilms
                                                                                         {"setFilmName", "Vul alstublieft een filmnaam in." },
                                                                                         {"setFilmDesc", "Vul alstublieft een description in." },
                                                                                         {"setFile", "Selecteer alstublieft een bestand." },
-                                                                                        {"wrongFileType", "Het bestandstype moet een van de volgende types zijn: PNG, JPG, JPEG" }
+                                                                                        {"wrongFileType", "Het bestandstype moet een van de volgende types zijn: PNG, JPG, JPEG" },
+                                                                                        {"filmUnavailable", "Deze film is momenteel niet beschikbaar." }
                                                                                         };
 
         private IDictionary<string, string> Notifications = new Dictionary<string, string>() { 
@@ -41,8 +43,28 @@ namespace UitlenenVanFilms
                                                                                         {"Name", "Naam" }
                                                                                         };
 
-        private frmUser user;
         private frmAdmin admin1;
+        private frmUser user;
+
+        public frmAdmin getAdmin()
+        {
+            return admin1;
+        }
+
+        public int getCustomerID()
+        {
+            return customerid;
+        }
+
+        public frmUser getUser()
+        {
+            return user;
+        }
+
+        public void setUser(frmUser user)
+        {
+            this.user = user;
+        }
 
         public IDictionary<string, string> getNotifications()
         {
@@ -84,7 +106,7 @@ namespace UitlenenVanFilms
                     bool ok = true;
 
                     String opdrString;
-                    opdrString = "SELECT Usernaam FROM tblUsers WHERE Usernaam = ?";
+                    opdrString = "SELECT User FROM tblUsers WHERE User = ?";
                     OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
 
                     opdracht.Parameters.AddWithValue("", Username);
@@ -101,7 +123,7 @@ namespace UitlenenVanFilms
 
                     if (ok)
                     {
-                        opdrString = "INSERT INTO tblUsers (Usernaam, Passwoord) VALUES (?,?)";
+                        opdrString = "INSERT INTO tblUsers (User, Passwoord) VALUES (?,?)";
                         //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                         OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
@@ -185,7 +207,9 @@ namespace UitlenenVanFilms
 
             String Username = txtUserLogin.Text, Password = txtPasswordLogin.Text;
 
-            if(!Username.Equals("") && !Password.Equals(""))
+            admin1 = new frmAdmin(this, txtUserLogin.Text);
+
+            if (!Username.Equals("") && !Password.Equals(""))
             {
                 String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
                 OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -196,7 +220,7 @@ namespace UitlenenVanFilms
 
                     String opdrString, opdrString1;
 
-                    opdrString1 = "SELECT COUNT(Usernaam) FROM tblUsers WHERE Usernaam = ?";
+                    opdrString1 = "SELECT COUNT(User) FROM tblUsers WHERE User = ?";
                     OleDbCommand opdracht1 = new OleDbCommand(opdrString1, verbinding);
 
                     opdracht1.Parameters.AddWithValue("", Username);
@@ -206,7 +230,7 @@ namespace UitlenenVanFilms
 
                     if (!dataLezer1.GetValue(0).ToString().Equals("0"))
                     {
-                        opdrString = "SELECT Passwoord, Admin FROM tblUsers WHERE Usernaam = ?";
+                        opdrString = "SELECT Passwoord, Admin, CustomerID FROM tblUsers WHERE User = ?";
                         OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
 
                         opdracht.Parameters.AddWithValue("", Username);
@@ -222,6 +246,7 @@ namespace UitlenenVanFilms
                             }
                             else
                             {
+                                customerid = Convert.ToInt32(dataLezer.GetValue(2).ToString());
                                 ok = true;
                                 if (dataLezer.GetValue(1).ToString().ToLower().Equals("true"))
                                 {
@@ -232,14 +257,18 @@ namespace UitlenenVanFilms
 
                         if (ok && admin)
                         {
+
                             admin1.Show();
                             this.Hide();
                         }
                         else
                         {
-                            user = new frmUser(this, txtUserLogin.Text, admin1);
-                            user.Show();
-                            this.Hide();
+                            if(ok)
+                            {
+                                user = new frmUser(this, txtUserLogin.Text, admin1);
+                                user.Show();
+                                this.Hide();
+                            }
                         }
                     }
                     else
@@ -281,11 +310,19 @@ namespace UitlenenVanFilms
 
         }
 
-        private void frmlog_KeyUp(object sender, KeyEventArgs e)
+        private void tabInloggen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmLog_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode.ToString().ToLower().Equals("return"))
             {
-                if(tabControlStart.SelectedTab == tabInloggen)
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                if (tabControlStart.SelectedTab == tabInloggen)
                 {
                     btnInloggen.PerformClick();
                 }
@@ -294,11 +331,6 @@ namespace UitlenenVanFilms
                     btnRegistreren.PerformClick();
                 }
             }
-        }
-
-        private void tabInloggen_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

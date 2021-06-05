@@ -30,17 +30,26 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSaveDatagrid = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgrdvwUsers = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtmoviename = new System.Windows.Forms.TextBox();
             this.lstvwFilmsAdmin = new System.Windows.Forms.ListView();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dtgrdvwOntleningen = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgrdvwUsers)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgrdvwOntleningen)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -57,6 +66,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -65,10 +76,29 @@
             this.tabPage1.Text = "Admin Home";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(218, 63);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Ga";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(65, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(147, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Ga naar de gebruikers panel: ";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btnSaveDatagrid);
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dtgrdvwUsers);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -87,20 +117,23 @@
             this.btnSaveDatagrid.UseVisualStyleBackColor = true;
             this.btnSaveDatagrid.Click += new System.EventHandler(this.btnSaveDatagrid_Click);
             // 
-            // dataGridView1
+            // dtgrdvwUsers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(445, 304);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            this.dtgrdvwUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgrdvwUsers.Location = new System.Drawing.Point(27, 40);
+            this.dtgrdvwUsers.Name = "dtgrdvwUsers";
+            this.dtgrdvwUsers.Size = new System.Drawing.Size(445, 304);
+            this.dtgrdvwUsers.TabIndex = 0;
+            this.dtgrdvwUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
+            this.dtgrdvwUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            this.dtgrdvwUsers.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dtgrdvwUsers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnSearch);
+            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Controls.Add(this.txtmoviename);
             this.tabPage3.Controls.Add(this.lstvwFilmsAdmin);
             this.tabPage3.Controls.Add(this.btnToevoegen);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -110,6 +143,34 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Films";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(320, 10);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 11;
+            this.btnSearch.Text = "Zoeken";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Find movie:";
+            // 
+            // txtmoviename
+            // 
+            this.txtmoviename.Location = new System.Drawing.Point(75, 12);
+            this.txtmoviename.Name = "txtmoviename";
+            this.txtmoviename.Size = new System.Drawing.Size(239, 20);
+            this.txtmoviename.TabIndex = 9;
+            this.txtmoviename.TextChanged += new System.EventHandler(this.txtmoviename_TextChanged);
+            this.txtmoviename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtmoviename_KeyDown);
             // 
             // lstvwFilmsAdmin
             // 
@@ -137,6 +198,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.dtgrdvwOntleningen);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -144,6 +206,14 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Ontleningen";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dtgrdvwOntleningen
+            // 
+            this.dtgrdvwOntleningen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgrdvwOntleningen.Location = new System.Drawing.Point(8, 6);
+            this.dtgrdvwOntleningen.Name = "dtgrdvwOntleningen";
+            this.dtgrdvwOntleningen.Size = new System.Drawing.Size(629, 270);
+            this.dtgrdvwOntleningen.TabIndex = 0;
             // 
             // frmAdmin
             // 
@@ -156,9 +226,14 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAdmin_FormClosing);
             this.Load += new System.EventHandler(this.frmAdmin_Load);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgrdvwUsers)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgrdvwOntleningen)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,7 +247,13 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.ListView lstvwFilmsAdmin;
         private System.Windows.Forms.Button btnToevoegen;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgrdvwUsers;
         private System.Windows.Forms.Button btnSaveDatagrid;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtmoviename;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dtgrdvwOntleningen;
     }
 }

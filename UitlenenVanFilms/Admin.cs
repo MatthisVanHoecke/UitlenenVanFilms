@@ -18,14 +18,17 @@ namespace UitlenenVanFilms
         private frmLog instance;
         private List<int> changedRows = new List<int>();
         private List<int> changedPass = new List<int>();
+        private List<string> paths = new List<string>();
         private List<int> deletedRows = new List<int>();
         private IDictionary<string, string> Notifications;
         private IDictionary<string, string> Errors;
         private string user = "";
         private int SelectedIndex = 0;
-        private List<IDictionary<string, string>> filmitems = new List<IDictionary<string, string>>();
+        private List<Dictionary<string, string>> filmitems = new List<Dictionary<string, string>>();
         private ImageList imgs;
-        private List<string> paths = new List<string>();
+        private frmUser users;
+        private int customerID;
+
 
         public frmAdmin(frmLog instance, string user)
         {
@@ -34,15 +37,28 @@ namespace UitlenenVanFilms
             Notifications = instance.getNotifications();
             Errors = instance.getErrors();
             this.user = user;
+
+            instance.setUser(new frmUser(instance, user, this));
+            users = instance.getUser();
+
+            paths = new List<string>();
+            paths = Directory.GetFiles("../Images/").ToList<string>();
         }
 
         private void frmAdmin_Load(object sender, EventArgs e)
         {
+            customerID = instance.getCustomerID();
             loadFilmList(lstvwFilmsAdmin);
-            loadDataGrid();
+            loadDataGrid("Select * From tblUsers", dtgrdvwUsers);
+            loadDataGrid("Select o.OrderID, f.FilmName, u.User, Boete, DatumOntlening, Ingeleverd From tblOrders o, tblUsers u, tblFilms f, tblOrderlines ord WHERE o.CustomerID = u.CustomerID AND f.FilmID = ord.FilmID AND o.OrderID = ord.OrderID", dtgrdvwOntleningen);
         }
 
-        private void loadDataGrid()
+        public List<Dictionary<string, string>> getFilmItems()
+        {
+            return filmitems;
+        }
+
+        private void loadDataGrid(string sql, DataGridView datagrid)
         {
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -51,17 +67,13 @@ namespace UitlenenVanFilms
             {
                 verbinding.Open();
 
-                String sql = "Select * From tblUsers";
-
                 OleDbDataAdapter adapter = new OleDbDataAdapter(sql, verbinding);
 
                 DataSet mydata = new DataSet();
 
                 adapter.Fill(mydata);
 
-                mydata.DataSetName = "Omschrijving fouten";
-
-                dataGridView1.DataSource = mydata.Tables[0];
+                datagrid.DataSource = mydata.Tables[0];
             }
             catch (Exception ex)
             {
@@ -73,8 +85,9 @@ namespace UitlenenVanFilms
             }
         }
 
-        public void createImageList(ListView view)
+        public ListView createImageList(ListView view)
         {
+
             view.Clear();
 
             view.View = View.Details;
@@ -91,12 +104,12 @@ namespace UitlenenVanFilms
             imgs = new ImageList();
             imgs.ImageSize = new Size(100, 148);
 
-            paths.Clear();
-            paths = Directory.GetFiles(Directory.GetParent(Directory.GetCurrentDirectory()) + "/Images").ToList<string>();
-
             view.SmallImageList = imgs;
 
-            for (int i = 0; i < paths.Count; i++)
+            paths = new List<string>();
+            paths = Directory.GetFiles("../Images/").ToList<string>();
+
+            for (int i = 0; i < filmitems.Count; i++)
             {
                 var image = Image.FromFile("../Images/" + filmitems[i]["FilmID"] + ".png");
                 imgs.Images.Add(image);
@@ -115,36 +128,41 @@ namespace UitlenenVanFilms
 
             view.Columns[1].TextAlign = HorizontalAlignment.Center;
             view.Columns[3].TextAlign = HorizontalAlignment.Center;
+
+            return view;
         }
 
         public ListView loadFilmList(ListView view)
         {
 
-            String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
-            OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
-            verbinding.Open();
-            try
+            if(paths.Count != filmitems.Count)
             {
-
-                String opdrString;
-
-                opdrString = "SELECT * FROM tblFilms";
-                OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
-
-                OleDbDataReader dataLezer = opdracht.ExecuteReader(CommandBehavior.CloseConnection);
-
-                while (dataLezer.Read())
+                String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
+                OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
+                verbinding.Open();
+                try
                 {
-                    filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() } });
+
+                    String opdrString;
+
+                    opdrString = "SELECT * FROM tblFilms";
+                    OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
+
+                    OleDbDataReader dataLezer = opdracht.ExecuteReader(CommandBehavior.CloseConnection);
+
+                    while (dataLezer.Read())
+                    {
+                        filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() } });
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                verbinding.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    verbinding.Close();
+                }
             }
 
             createImageList(view);
@@ -175,13 +193,13 @@ namespace UitlenenVanFilms
                 verbinding.Open();
                 foreach (int val in changedRows)
                 {
-                    String sql = "UPDATE tblUsers SET Usernaam = ?, Passwoord = ?, Admin = ? WHERE CustomerID = ?";
+                    String sql = "UPDATE tblUsers SET User = ?, Passwoord = ?, Admin = ? WHERE CustomerID = ?";
                     OleDbCommand opdracht = new OleDbCommand(sql, verbinding);
 
-                    opdracht.Parameters.AddWithValue("", dataGridView1.Rows[val].Cells[1].Value);
-                    opdracht.Parameters.AddWithValue("", instance.EncodePasswordToBase64(dataGridView1.Rows[val].Cells[2].Value.ToString()));
-                    opdracht.Parameters.AddWithValue("", dataGridView1.Rows[val].Cells[3].Value);
-                    opdracht.Parameters.AddWithValue("", dataGridView1.Rows[val].Cells[0].Value);
+                    opdracht.Parameters.AddWithValue("", dtgrdvwUsers.Rows[val].Cells[1].Value);
+                    opdracht.Parameters.AddWithValue("", instance.EncodePasswordToBase64(dtgrdvwUsers.Rows[val].Cells[2].Value.ToString()));
+                    opdracht.Parameters.AddWithValue("", dtgrdvwUsers.Rows[val].Cells[3].Value);
+                    opdracht.Parameters.AddWithValue("", dtgrdvwUsers.Rows[val].Cells[0].Value);
 
                     opdracht.ExecuteNonQuery();
                 }
@@ -206,7 +224,7 @@ namespace UitlenenVanFilms
             }
             foreach (int val in changedPass.ToList())
             {
-                dataGridView1.Rows[val].Cells[2].Value = instance.EncodePasswordToBase64(dataGridView1.Rows[val].Cells[2].Value.ToString());
+                dtgrdvwUsers.Rows[val].Cells[2].Value = instance.EncodePasswordToBase64(dtgrdvwUsers.Rows[val].Cells[2].Value.ToString());
             }
             changedRows.Clear();
             changedPass.Clear();
@@ -217,9 +235,9 @@ namespace UitlenenVanFilms
         {
             if(e.KeyCode.ToString().ToLower().Equals("delete"))
             {
-                for(int i = 0; i < dataGridView1.SelectedRows.Count; i++)
+                for(int i = 0; i < dtgrdvwUsers.SelectedRows.Count; i++)
                 {
-                    deletedRows.Add((int)dataGridView1.SelectedRows[i].Cells[0].Value);
+                    deletedRows.Add((int)dtgrdvwUsers.SelectedRows[i].Cells[0].Value);
                 }
             }
         }
@@ -241,7 +259,7 @@ namespace UitlenenVanFilms
                 String opdrString;
 
 
-                opdrString = "INSERT INTO tblFilms (FilmID, Name, Description) VALUES (?,?,?)";
+                opdrString = "INSERT INTO tblFilms (FilmID, FilmName, Description) VALUES (?,?,?)";
                 //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                 OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
@@ -263,7 +281,10 @@ namespace UitlenenVanFilms
 
             var image = Image.FromFile(path);
             imgs.Images.Add(image);
-            lstvwFilmsAdmin.Items.Add(desc, lstvwFilmsAdmin.Items.Count);
+            lstvwFilmsAdmin.Items.Add(name, lstvwFilmsAdmin.Items.Count);
+            lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count-1].SubItems.Add(FilmID.ToString());
+            lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count-1].SubItems.Add(desc);
+            lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count-1].SubItems.Add(true.ToString());
             filmitems.Add(new Dictionary<string, string>() { { "FilmID", FilmID.ToString() }, { "Name", name }, { "Description", desc }, { "Available", "true" } });
             image.Dispose();
         }
@@ -278,7 +299,7 @@ namespace UitlenenVanFilms
                 String opdrString;
 
 
-                opdrString = "UPDATE tblFilms SET Name = ?, Description = ?, Available = ? WHERE FilmID = ?";
+                opdrString = "UPDATE tblFilms SET FilmName = ?, Description = ?, Available = ? WHERE FilmID = ?";
                 //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                 OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
@@ -322,7 +343,7 @@ namespace UitlenenVanFilms
             if(e.ColumnIndex == 0)
             {
                 MessageBox.Show("U kunt dit column niet aanpassen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dataGridView1.Rows[e.RowIndex].Cells[0].ReadOnly = true;
+                dtgrdvwUsers.Rows[e.RowIndex].Cells[0].ReadOnly = true;
             }
         }
 
@@ -358,9 +379,9 @@ namespace UitlenenVanFilms
                     for (int i = 0; i < lstvwFilmsAdmin.SelectedItems.Count; i++)
                     {
                         int index = lstvwFilmsAdmin.SelectedItems[i].Index;
-                        deleteItems += (filmitems[index]["Name"] + "\n");
+                        deleteItems += ("\n" + filmitems[index]["Name"]);
                     }
-                    DialogResult result = MessageBox.Show(Notifications["deleteVerify"], Notifications["Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show(Notifications["deleteVerify"] + deleteItems, Notifications["Warning"], MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if(result == DialogResult.Yes)
                     {
                         String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
@@ -394,7 +415,7 @@ namespace UitlenenVanFilms
                         {
                             verbinding.Close();
                         }
-                        loadFilmList(lstvwFilmsAdmin);
+                        createImageList(lstvwFilmsAdmin);
                     }
                 }
             }
@@ -402,6 +423,42 @@ namespace UitlenenVanFilms
 
         private void btnSaveFilms_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            lstvwFilmsAdmin = createImageList(lstvwFilmsAdmin);
+            for (int i = filmitems.Count - 1; i >= 0; i--)
+            {
+                if (!filmitems[i]["Name"].ToLower().StartsWith(txtmoviename.Text))
+                {
+                    lstvwFilmsAdmin.Items.RemoveAt(i);
+
+                }
+            }
+        }
+
+        private void txtmoviename_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtmoviename_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode.ToString().ToLower().Equals("return"))
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                btnSearch.PerformClick();
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            users.Show();
         }
     }
 }
