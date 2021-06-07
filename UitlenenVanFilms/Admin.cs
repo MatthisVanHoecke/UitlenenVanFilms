@@ -30,6 +30,8 @@ namespace UitlenenVanFilms
         private int customerID;
 
 
+
+
         public frmAdmin(frmLog instance, string user)
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace UitlenenVanFilms
         private void frmAdmin_Load(object sender, EventArgs e)
         {
             customerID = instance.getCustomerID();
-            loadFilmList(lstvwFilmsAdmin);
+            loadFilmList(lstvwFilmsAdmin, "SELECT * FROM tblFilms", "");
             loadDataGrid("Select * From tblUsers", dtgrdvwUsers);
             loadDataGrid("Select o.OrderID, f.FilmName, u.User, Boete, DatumOntlening, Ingeleverd From tblOrders o, tblUsers u, tblFilms f, tblOrderlines ord WHERE o.CustomerID = u.CustomerID AND f.FilmID = ord.FilmID AND o.OrderID = ord.OrderID", dtgrdvwOntleningen);
         }
@@ -132,7 +134,7 @@ namespace UitlenenVanFilms
             return view;
         }
 
-        public ListView loadFilmList(ListView view)
+        public ListView loadFilmList(ListView view, string opdrString, string parameter)
         {
 
             if(paths.Count != filmitems.Count)
@@ -142,11 +144,11 @@ namespace UitlenenVanFilms
                 verbinding.Open();
                 try
                 {
-
-                    String opdrString;
-
-                    opdrString = "SELECT * FROM tblFilms";
                     OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
+                    if(parameter != "")
+                    {
+                        opdracht.Parameters.AddWithValue("", parameter);
+                    }
 
                     OleDbDataReader dataLezer = opdracht.ExecuteReader(CommandBehavior.CloseConnection);
 
@@ -459,6 +461,11 @@ namespace UitlenenVanFilms
         {
             this.Hide();
             users.Show();
+        }
+
+        private void TabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

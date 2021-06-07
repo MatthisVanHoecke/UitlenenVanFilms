@@ -30,10 +30,11 @@ C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVan
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
 C:\Users\avida\Downloads\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
-C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmAdmin.resources
-C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\safe.frmfilms.resources
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmAdmin.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmUser.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmAdmin.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmUser.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources

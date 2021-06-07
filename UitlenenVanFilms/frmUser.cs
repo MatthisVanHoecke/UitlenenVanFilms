@@ -50,11 +50,19 @@ namespace UitlenenVanFilms
 
         private void frmfilms_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(instance.getCustomerID() + "");
             customerID = instance.getCustomerID();
 
-            lstvwFilmsUser = admin.loadFilmList(lstvwFilmsUser);
+            instance.getNotifications()["Available"] = "Ingeleverd";
+            lstvwOntleendeFilms = admin.loadFilmList(lstvwOntleendeFilms, "SELECT f.FilmID, f.FilmName, f.Description, o.Ingeleverd FROM tblFilms f, tblOrders o, tblOrderlines ol WHERE f.FilmID = ol.FilmID AND ol.OrderID = o.OrderID AND o.CustomerID = ?", customerID.ToString());
+
+            filmitems.Clear();
+            admin.getFilmItems().Clear();
+
+            instance.getNotifications()["Available"] = "Beschikbaar";
+            lstvwFilmsUser = admin.loadFilmList(lstvwFilmsUser, "SELECT * FROM tblFilms", "");
+
             lstvwFilmsUser.Columns.Remove(lstvwFilmsUser.Columns[1]);
+            lstvwOntleendeFilms.Columns.Remove(lstvwFilmsUser.Columns[1]);
             filmitems = admin.getFilmItems();
             Notifications = instance.getNotifications();
             Errors = instance.getErrors();
@@ -172,15 +180,10 @@ namespace UitlenenVanFilms
             }
         }
 
-        private void lstvwFilmsAdmin_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void BtnRent_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnRent_Click(object sender, EventArgs e)
-        {
-
-            if(lstvwFilmsUser.SelectedItems.Count != 0)
+            if (lstvwFilmsUser.SelectedItems.Count != 0)
             {
                 String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
                 OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -189,7 +192,7 @@ namespace UitlenenVanFilms
                 {
                     for (int i = 0; i < lstvwFilmsUser.SelectedItems.Count; i++)
                     {
-                        if(Convert.ToBoolean(filmitems[lstvwFilmsUser.SelectedItems[i].Index]["Available"]))
+                        if (Convert.ToBoolean(filmitems[lstvwFilmsUser.SelectedItems[i].Index]["Available"]))
                         {
                             string opdrString = "SELECT MAX(OrderID) FROM tblOrders";
                             OleDbCommand opdracht = new OleDbCommand(opdrString, verbinding);
@@ -244,18 +247,7 @@ namespace UitlenenVanFilms
             }
         }
 
-        private void txtmoviename_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode.ToString().ToLower().Equals("return"))
-            {
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-
-                btnSearch.PerformClick();
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void BtnSearch_Click_1(object sender, EventArgs e)
         {
             lstvwFilmsUser = admin.createImageList(lstvwFilmsUser);
             for (int i = filmitems.Count - 1; i >= 0; i--)
@@ -265,6 +257,17 @@ namespace UitlenenVanFilms
                     lstvwFilmsUser.Items.RemoveAt(i);
 
                 }
+            }
+        }
+
+        private void Txtmoviename_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.ToString().ToLower().Equals("return"))
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+
+                btnSearch.PerformClick();
             }
         }
     }

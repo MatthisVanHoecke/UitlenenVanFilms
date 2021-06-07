@@ -28,49 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControlHome = new System.Windows.Forms.TabControl();
-            this.home = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabHome = new System.Windows.Forms.TabPage();
             this.lblwelkom = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabOverzicht = new System.Windows.Forms.TabPage();
+            this.tabAccount = new System.Windows.Forms.TabPage();
+            this.dgvUser = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.tabSettings = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabFilmLenen = new System.Windows.Forms.TabPage();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtmoviename = new System.Windows.Forms.TextBox();
             this.btnRent = new System.Windows.Forms.Button();
             this.lstvwFilmsUser = new System.Windows.Forms.ListView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dgvUser = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabControlHome.SuspendLayout();
-            this.home.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabOntleendeFilms = new System.Windows.Forms.TabPage();
+            this.lstvwOntleendeFilms = new System.Windows.Forms.ListView();
+            this.tabControl.SuspendLayout();
+            this.tabHome.SuspendLayout();
+            this.tabOverzicht.SuspendLayout();
+            this.tabAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabFilmLenen.SuspendLayout();
+            this.tabOntleendeFilms.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControlHome
+            // tabControl
             // 
-            this.tabControlHome.Controls.Add(this.home);
-            this.tabControlHome.Controls.Add(this.tabPage2);
-            this.tabControlHome.Controls.Add(this.tabPage3);
-            this.tabControlHome.Controls.Add(this.tabPage1);
-            this.tabControlHome.Location = new System.Drawing.Point(1, -1);
-            this.tabControlHome.Name = "tabControlHome";
-            this.tabControlHome.SelectedIndex = 0;
-            this.tabControlHome.Size = new System.Drawing.Size(798, 498);
-            this.tabControlHome.TabIndex = 1;
+            this.tabControl.Controls.Add(this.tabHome);
+            this.tabControl.Controls.Add(this.tabOverzicht);
+            this.tabControl.Controls.Add(this.tabAccount);
+            this.tabControl.Controls.Add(this.tabSettings);
+            this.tabControl.Location = new System.Drawing.Point(1, -1);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(798, 498);
+            this.tabControl.TabIndex = 1;
             // 
-            // home
+            // tabHome
             // 
-            this.home.Controls.Add(this.lblwelkom);
-            this.home.Location = new System.Drawing.Point(4, 22);
-            this.home.Name = "home";
-            this.home.Padding = new System.Windows.Forms.Padding(3);
-            this.home.Size = new System.Drawing.Size(790, 472);
-            this.home.TabIndex = 0;
-            this.home.Text = "home";
-            this.home.UseVisualStyleBackColor = true;
-            this.home.Click += new System.EventHandler(this.home_Click);
+            this.tabHome.Controls.Add(this.lblwelkom);
+            this.tabHome.Location = new System.Drawing.Point(4, 22);
+            this.tabHome.Name = "tabHome";
+            this.tabHome.Padding = new System.Windows.Forms.Padding(3);
+            this.tabHome.Size = new System.Drawing.Size(790, 472);
+            this.tabHome.TabIndex = 0;
+            this.tabHome.Text = "home";
+            this.tabHome.UseVisualStyleBackColor = true;
+            this.tabHome.Click += new System.EventHandler(this.home_Click);
             // 
             // lblwelkom
             // 
@@ -82,81 +89,28 @@
             this.lblwelkom.Text = "label1";
             this.lblwelkom.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // tabPage2
+            // tabOverzicht
             // 
-            this.tabPage2.Controls.Add(this.btnSearch);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.txtmoviename);
-            this.tabPage2.Controls.Add(this.btnRent);
-            this.tabPage2.Controls.Add(this.lstvwFilmsUser);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(790, 472);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "overzicht";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabOverzicht.Controls.Add(this.tabControl1);
+            this.tabOverzicht.Location = new System.Drawing.Point(4, 22);
+            this.tabOverzicht.Name = "tabOverzicht";
+            this.tabOverzicht.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOverzicht.Size = new System.Drawing.Size(790, 472);
+            this.tabOverzicht.TabIndex = 1;
+            this.tabOverzicht.Text = "overzicht";
+            this.tabOverzicht.UseVisualStyleBackColor = true;
             // 
-            // btnSearch
+            // tabAccount
             // 
-            this.btnSearch.Location = new System.Drawing.Point(319, 11);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 8;
-            this.btnSearch.Text = "Zoeken";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Find movie:";
-            // 
-            // txtmoviename
-            // 
-            this.txtmoviename.Location = new System.Drawing.Point(74, 13);
-            this.txtmoviename.Name = "txtmoviename";
-            this.txtmoviename.Size = new System.Drawing.Size(239, 20);
-            this.txtmoviename.TabIndex = 6;
-            this.txtmoviename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtmoviename_KeyDown);
-            // 
-            // btnRent
-            // 
-            this.btnRent.Location = new System.Drawing.Point(7, 431);
-            this.btnRent.Name = "btnRent";
-            this.btnRent.Size = new System.Drawing.Size(106, 35);
-            this.btnRent.TabIndex = 5;
-            this.btnRent.Text = "Huren";
-            this.btnRent.UseVisualStyleBackColor = true;
-            this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
-            // 
-            // lstvwFilmsUser
-            // 
-            this.lstvwFilmsUser.AllowColumnReorder = true;
-            this.lstvwFilmsUser.FullRowSelect = true;
-            this.lstvwFilmsUser.HideSelection = false;
-            this.lstvwFilmsUser.Location = new System.Drawing.Point(7, 39);
-            this.lstvwFilmsUser.Name = "lstvwFilmsUser";
-            this.lstvwFilmsUser.Size = new System.Drawing.Size(776, 386);
-            this.lstvwFilmsUser.TabIndex = 4;
-            this.lstvwFilmsUser.UseCompatibleStateImageBehavior = false;
-            this.lstvwFilmsUser.SelectedIndexChanged += new System.EventHandler(this.lstvwFilmsAdmin_SelectedIndexChanged);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.dgvUser);
-            this.tabPage3.Controls.Add(this.btnSave);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(790, 472);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Mijn account";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabAccount.Controls.Add(this.dgvUser);
+            this.tabAccount.Controls.Add(this.btnSave);
+            this.tabAccount.Location = new System.Drawing.Point(4, 22);
+            this.tabAccount.Name = "tabAccount";
+            this.tabAccount.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAccount.Size = new System.Drawing.Size(790, 472);
+            this.tabAccount.TabIndex = 2;
+            this.tabAccount.Text = "Mijn account";
+            this.tabAccount.UseVisualStyleBackColor = true;
             // 
             // dgvUser
             // 
@@ -179,53 +133,155 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
-            // tabPage1
+            // tabSettings
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(790, 472);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "instellingen";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabSettings.Location = new System.Drawing.Point(4, 22);
+            this.tabSettings.Name = "tabSettings";
+            this.tabSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSettings.Size = new System.Drawing.Size(790, 472);
+            this.tabSettings.TabIndex = 3;
+            this.tabSettings.Text = "instellingen";
+            this.tabSettings.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabFilmLenen);
+            this.tabControl1.Controls.Add(this.tabOntleendeFilms);
+            this.tabControl1.Location = new System.Drawing.Point(3, -2);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(787, 476);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabFilmLenen
+            // 
+            this.tabFilmLenen.Controls.Add(this.btnSearch);
+            this.tabFilmLenen.Controls.Add(this.label1);
+            this.tabFilmLenen.Controls.Add(this.txtmoviename);
+            this.tabFilmLenen.Controls.Add(this.btnRent);
+            this.tabFilmLenen.Controls.Add(this.lstvwFilmsUser);
+            this.tabFilmLenen.Location = new System.Drawing.Point(4, 22);
+            this.tabFilmLenen.Name = "tabFilmLenen";
+            this.tabFilmLenen.Padding = new System.Windows.Forms.Padding(3);
+            this.tabFilmLenen.Size = new System.Drawing.Size(779, 450);
+            this.tabFilmLenen.TabIndex = 0;
+            this.tabFilmLenen.Text = "Films lenen";
+            this.tabFilmLenen.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(315, 11);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 13;
+            this.btnSearch.Text = "Zoeken";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Find movie:";
+            // 
+            // txtmoviename
+            // 
+            this.txtmoviename.Location = new System.Drawing.Point(70, 13);
+            this.txtmoviename.Name = "txtmoviename";
+            this.txtmoviename.Size = new System.Drawing.Size(239, 20);
+            this.txtmoviename.TabIndex = 11;
+            this.txtmoviename.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtmoviename_KeyDown_1);
+            // 
+            // btnRent
+            // 
+            this.btnRent.Location = new System.Drawing.Point(3, 404);
+            this.btnRent.Name = "btnRent";
+            this.btnRent.Size = new System.Drawing.Size(106, 35);
+            this.btnRent.TabIndex = 10;
+            this.btnRent.Text = "Huren";
+            this.btnRent.UseVisualStyleBackColor = true;
+            this.btnRent.Click += new System.EventHandler(this.BtnRent_Click_1);
+            // 
+            // lstvwFilmsUser
+            // 
+            this.lstvwFilmsUser.AllowColumnReorder = true;
+            this.lstvwFilmsUser.FullRowSelect = true;
+            this.lstvwFilmsUser.HideSelection = false;
+            this.lstvwFilmsUser.Location = new System.Drawing.Point(3, 39);
+            this.lstvwFilmsUser.Name = "lstvwFilmsUser";
+            this.lstvwFilmsUser.Size = new System.Drawing.Size(776, 359);
+            this.lstvwFilmsUser.TabIndex = 9;
+            this.lstvwFilmsUser.UseCompatibleStateImageBehavior = false;
+            // 
+            // tabOntleendeFilms
+            // 
+            this.tabOntleendeFilms.Controls.Add(this.lstvwOntleendeFilms);
+            this.tabOntleendeFilms.Location = new System.Drawing.Point(4, 22);
+            this.tabOntleendeFilms.Name = "tabOntleendeFilms";
+            this.tabOntleendeFilms.Padding = new System.Windows.Forms.Padding(3);
+            this.tabOntleendeFilms.Size = new System.Drawing.Size(779, 450);
+            this.tabOntleendeFilms.TabIndex = 1;
+            this.tabOntleendeFilms.Text = "Ontleende films";
+            this.tabOntleendeFilms.UseVisualStyleBackColor = true;
+            // 
+            // lstvwOntleendeFilms
+            // 
+            this.lstvwOntleendeFilms.AllowColumnReorder = true;
+            this.lstvwOntleendeFilms.FullRowSelect = true;
+            this.lstvwOntleendeFilms.HideSelection = false;
+            this.lstvwOntleendeFilms.Location = new System.Drawing.Point(1, 25);
+            this.lstvwOntleendeFilms.Name = "lstvwOntleendeFilms";
+            this.lstvwOntleendeFilms.Size = new System.Drawing.Size(776, 419);
+            this.lstvwOntleendeFilms.TabIndex = 11;
+            this.lstvwOntleendeFilms.UseCompatibleStateImageBehavior = false;
             // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 501);
-            this.Controls.Add(this.tabControlHome);
+            this.Controls.Add(this.tabControl);
             this.Name = "frmUser";
             this.Text = "Films uitlenen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmfilms_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frmfilms_FormClosed);
             this.Load += new System.EventHandler(this.frmfilms_Load);
-            this.tabControlHome.ResumeLayout(false);
-            this.home.ResumeLayout(false);
-            this.home.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabHome.ResumeLayout(false);
+            this.tabHome.PerformLayout();
+            this.tabOverzicht.ResumeLayout(false);
+            this.tabAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUser)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabFilmLenen.ResumeLayout(false);
+            this.tabFilmLenen.PerformLayout();
+            this.tabOntleendeFilms.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControlHome;
-        private System.Windows.Forms.TabPage home;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabHome;
+        private System.Windows.Forms.TabPage tabOverzicht;
+        private System.Windows.Forms.TabPage tabAccount;
+        private System.Windows.Forms.TabPage tabSettings;
         private System.Windows.Forms.Label lblwelkom;
         private System.Windows.Forms.DataGridView dgvUser;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.ListView lstvwFilmsUser;
-        private System.Windows.Forms.Button btnRent;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabFilmLenen;
+        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtmoviename;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnRent;
+        private System.Windows.Forms.ListView lstvwFilmsUser;
+        private System.Windows.Forms.TabPage tabOntleendeFilms;
+        private System.Windows.Forms.ListView lstvwOntleendeFilms;
     }
 }
 
