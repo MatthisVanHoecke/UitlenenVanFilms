@@ -52,8 +52,27 @@ namespace UitlenenVanFilms
         {
             customerID = instance.getCustomerID();
 
+            filmitems.Clear();
+            admin.getFilmItems().Clear();
+
             instance.getNotifications()["Available"] = "Ingeleverd";
-            lstvwOntleendeFilms = admin.loadFilmList(lstvwOntleendeFilms, "SELECT f.FilmID, f.FilmName, f.Description, o.Ingeleverd FROM tblFilms f, tblOrders o, tblOrderlines ol WHERE f.FilmID = ol.FilmID AND ol.OrderID = o.OrderID AND o.CustomerID = ?", customerID.ToString());
+            lstvwOntleendeFilms = admin.loadFilmList(lstvwOntleendeFilms, "SELECT f.FilmID, f.FilmName, f.Description, o.Ingeleverd, o.Boete FROM tblFilms f, tblOrders o, tblOrderlines ol WHERE f.FilmID = ol.FilmID AND ol.OrderID = o.OrderID AND o.CustomerID = ?", customerID.ToString());
+            filmitems = admin.getFilmItems();
+            Notifications = instance.getNotifications();
+            bool ok = true;
+            for (int i = 0; i < filmitems.Count; i++)
+            {
+                if (Convert.ToDouble(filmitems[i]["Fine"]) > 0)
+                {
+                    ok = false;
+                }
+            }
+
+            if (!ok)
+            {
+                MessageBox.Show(Notifications["openFine"], Notifications["Warning"], MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
 
             filmitems.Clear();
             admin.getFilmItems().Clear();
@@ -64,7 +83,6 @@ namespace UitlenenVanFilms
             lstvwFilmsUser.Columns.Remove(lstvwFilmsUser.Columns[1]);
             lstvwOntleendeFilms.Columns.Remove(lstvwFilmsUser.Columns[1]);
             filmitems = admin.getFilmItems();
-            Notifications = instance.getNotifications();
             Errors = instance.getErrors();
             loadDataGrid();
             lblwelkom.Text = "Welkom, " + user;

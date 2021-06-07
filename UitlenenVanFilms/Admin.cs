@@ -119,7 +119,12 @@ namespace UitlenenVanFilms
                 view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["FilmID"]);
                 view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Description"]);
                 view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Available"]);
-                
+                if (filmitems[i]["Fine"] != null)
+                {
+                    view.Columns.Add(Notifications["Fine"]);
+                    view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Fine"]);
+                }
+
                 image.Dispose();
             }
 
@@ -154,7 +159,7 @@ namespace UitlenenVanFilms
 
                     while (dataLezer.Read())
                     {
-                        filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() } });
+                        filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() }, {"Fine", dataLezer.FieldCount == 5 ? dataLezer.GetValue(4).ToString() : null } });
                     }
                 }
                 catch (Exception ex)
@@ -466,6 +471,69 @@ namespace UitlenenVanFilms
         private void TabPage1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBoeteUpdate_Click(object sender, EventArgs e)
+        {
+            updateOrder();
+        }
+
+        private void updateOrder()
+        {
+            for (int i = 0; i < dtgrdvwOntleningen.Rows.Count - 1; i++)
+            {
+                if ((int)DateTime.Today.Subtract(Convert.ToDateTime(dtgrdvwOntleningen.Rows[i].Cells[4].Value).Date).TotalDays / 14 != 0)
+                {
+                    dtgrdvwOntleningen.Rows[i].Cells[3].Value = 5 * ((DateTime.Today - DateTime.Parse(dtgrdvwOntleningen.Rows[i].Cells[4].Value.ToString()).Date).TotalDays / 14);
+                    updateOrderTable(Convert.ToInt32(dtgrdvwOntleningen.Rows[i].Cells[3].Value), Convert.ToInt32(dtgrdvwOntleningen.Rows[i].Cells[0].Value));
+                }
+            }
+        }
+
+        private void updateOrderTable(int boete, int num)
+        {
+            String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
+            OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
+            verbinding.Open();
+            try
+            {
+                String opdrString;
+
+
+                opdrString = "UPDATE tblOrders SET Boete = ? WHERE OrderID = ?";
+                //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
+                OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
+
+                opdracht2.Parameters.AddWithValue("", boete);
+                opdracht2.Parameters.AddWithValue("", num);
+
+                opdracht2.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Errors["tableError"] + ex);
+            }
+            finally
+            {
+                verbinding.Close();
+            }
+        }
+
+        private void tmrboete_Tick(object sender, EventArgs e)
+        {
+            updateOrder();
+        }
+
+        public void setTime(int val)
+        {
+            tmrboete.Interval = val;
+        }
+
+        private void btnTimeSchedule_Click(object sender, EventArgs e)
+        {
+            frmSetSchedule schedule = new frmSetSchedule(this, tmrboete.Interval / 60000);
+            schedule.Show();
         }
     }
 }

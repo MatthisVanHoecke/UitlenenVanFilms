@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
@@ -42,7 +43,12 @@
             this.lstvwFilmsAdmin = new System.Windows.Forms.ListView();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lblTimeSchedule = new System.Windows.Forms.Label();
+            this.btnTimeSchedule = new System.Windows.Forms.Button();
+            this.lblBoeteUpdate = new System.Windows.Forms.Label();
+            this.btnBoeteUpdate = new System.Windows.Forms.Button();
             this.dtgrdvwOntleningen = new System.Windows.Forms.DataGridView();
+            this.tmrboete = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -199,6 +205,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.lblTimeSchedule);
+            this.tabPage4.Controls.Add(this.btnTimeSchedule);
+            this.tabPage4.Controls.Add(this.lblBoeteUpdate);
+            this.tabPage4.Controls.Add(this.btnBoeteUpdate);
             this.tabPage4.Controls.Add(this.dtgrdvwOntleningen);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -208,6 +218,44 @@
             this.tabPage4.Text = "Ontleningen";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // lblTimeSchedule
+            // 
+            this.lblTimeSchedule.AutoSize = true;
+            this.lblTimeSchedule.Location = new System.Drawing.Point(8, 361);
+            this.lblTimeSchedule.Name = "lblTimeSchedule";
+            this.lblTimeSchedule.Size = new System.Drawing.Size(133, 13);
+            this.lblTimeSchedule.TabIndex = 4;
+            this.lblTimeSchedule.Text = "Boete Update Tijdschema:";
+            // 
+            // btnTimeSchedule
+            // 
+            this.btnTimeSchedule.Location = new System.Drawing.Point(147, 356);
+            this.btnTimeSchedule.Name = "btnTimeSchedule";
+            this.btnTimeSchedule.Size = new System.Drawing.Size(68, 23);
+            this.btnTimeSchedule.TabIndex = 3;
+            this.btnTimeSchedule.Text = "Time";
+            this.btnTimeSchedule.UseVisualStyleBackColor = true;
+            this.btnTimeSchedule.Click += new System.EventHandler(this.btnTimeSchedule_Click);
+            // 
+            // lblBoeteUpdate
+            // 
+            this.lblBoeteUpdate.AutoSize = true;
+            this.lblBoeteUpdate.Location = new System.Drawing.Point(8, 319);
+            this.lblBoeteUpdate.Name = "lblBoeteUpdate";
+            this.lblBoeteUpdate.Size = new System.Drawing.Size(115, 13);
+            this.lblBoeteUpdate.TabIndex = 2;
+            this.lblBoeteUpdate.Text = "Forceer Boete Update:";
+            // 
+            // btnBoeteUpdate
+            // 
+            this.btnBoeteUpdate.Location = new System.Drawing.Point(129, 314);
+            this.btnBoeteUpdate.Name = "btnBoeteUpdate";
+            this.btnBoeteUpdate.Size = new System.Drawing.Size(68, 23);
+            this.btnBoeteUpdate.TabIndex = 1;
+            this.btnBoeteUpdate.Text = "Update";
+            this.btnBoeteUpdate.UseVisualStyleBackColor = true;
+            this.btnBoeteUpdate.Click += new System.EventHandler(this.btnBoeteUpdate_Click);
+            // 
             // dtgrdvwOntleningen
             // 
             this.dtgrdvwOntleningen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -215,6 +263,12 @@
             this.dtgrdvwOntleningen.Name = "dtgrdvwOntleningen";
             this.dtgrdvwOntleningen.Size = new System.Drawing.Size(629, 270);
             this.dtgrdvwOntleningen.TabIndex = 0;
+            // 
+            // tmrboete
+            // 
+            this.tmrboete.Enabled = true;
+            this.tmrboete.Interval = 60000;
+            this.tmrboete.Tick += new System.EventHandler(this.tmrboete_Tick);
             // 
             // frmAdmin
             // 
@@ -234,6 +288,7 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvwOntleningen)).EndInit();
             this.ResumeLayout(false);
 
@@ -256,5 +311,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dtgrdvwOntleningen;
+        private System.Windows.Forms.Label lblTimeSchedule;
+        private System.Windows.Forms.Button btnTimeSchedule;
+        private System.Windows.Forms.Label lblBoeteUpdate;
+        private System.Windows.Forms.Button btnBoeteUpdate;
+        private System.Windows.Forms.Timer tmrboete;
     }
 }

@@ -40,7 +40,9 @@ namespace UitlenenVanFilms
                                                                                         {"Film", "Film" },
                                                                                         {"Description", "Beschrijving" },
                                                                                         {"Available", "Beschikbaar" },
-                                                                                        {"Name", "Naam" }
+                                                                                        {"Name", "Naam" },
+                                                                                        {"Fine", "Boete" },
+                                                                                        {"openFine", "U heeft een openstaande boete, los dit alstublieft zo snel mogelijk op!" }
                                                                                         };
 
         private frmAdmin admin1;
