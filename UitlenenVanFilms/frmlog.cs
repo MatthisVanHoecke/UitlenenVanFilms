@@ -42,7 +42,8 @@ namespace UitlenenVanFilms
                                                                                         {"Available", "Beschikbaar" },
                                                                                         {"Name", "Naam" },
                                                                                         {"Fine", "Boete" },
-                                                                                        {"openFine", "U heeft een openstaande boete, los dit alstublieft zo snel mogelijk op!" }
+                                                                                        {"openFine", "U heeft een openstaande boete, los dit alstublieft zo snel mogelijk op!" },
+                                                                                        {"Category", "Categorie"}
                                                                                         };
 
         private frmAdmin admin1;
@@ -95,11 +96,11 @@ namespace UitlenenVanFilms
         private void BtnRegistreren_Click(object sender, EventArgs e)
         {
 
-            String Username = txtCreateUser.Text, Email = txtCreateEmail.Text, Password = txtCreatePassword.Text, ConfirmPassword = txtConfirmPassword.Text;
+            String Username = txtCreateUser.Text, Password = txtCreatePassword.Text, ConfirmPassword = txtConfirmPassword.Text;
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
 
-            if(!Username.Equals("") && !Email.Equals("") && !Password.Equals("") && !ConfirmPassword.Equals(""))
+            if(!Username.Equals("") && !Password.Equals("") && !ConfirmPassword.Equals(""))
             {
                 verbinding.Open();
                 try
@@ -125,7 +126,7 @@ namespace UitlenenVanFilms
 
                     if (ok)
                     {
-                        opdrString = "INSERT INTO tblUsers (User, Passwoord) VALUES (?,?)";
+                        opdrString = "INSERT INTO tblUsers ([User], Passwoord) VALUES (?,?)";
                         //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                         OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
@@ -133,6 +134,8 @@ namespace UitlenenVanFilms
                         opdracht2.Parameters.AddWithValue("", EncodePasswordToBase64(Password));
 
                         opdracht2.ExecuteNonQuery();
+
+                        MessageBox.Show("User aangemaakt.");
                     }
                 }
                 catch (Exception ex)
@@ -150,10 +153,6 @@ namespace UitlenenVanFilms
                 if(Username.Equals(""))
                 {
                     err += Errors["emptyUsername"] + "\n";
-                }
-                if(Email.Equals(""))
-                {
-                    err += Errors["emptyEmail"] + "\n";
                 }
                 if (Password.Equals(""))
                 {

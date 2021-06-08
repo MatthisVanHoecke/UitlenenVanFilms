@@ -19,7 +19,7 @@ namespace UitlenenVanFilms
         private IDictionary<string, string> Errors;
         private bool ok = true, close = false;
         private Image image, image2;
-        public frmWijzig(int FilmID, string name, string desc, bool available, frmAdmin Ainstance, frmLog Linstance)
+        public frmWijzig(int FilmID, string name, string desc, bool available, string Category, frmAdmin Ainstance, frmLog Linstance)
         {
             InitializeComponent();
             this.Ainstance = Ainstance;
@@ -29,6 +29,7 @@ namespace UitlenenVanFilms
 
             txtname.Text = name;
             txtdescription.Text = desc;
+            txtCategory.Text = Category;
             image = Image.FromFile("../Images/" + FilmID + ".png");
             pctrbxFile.Image = image;
 
@@ -44,7 +45,7 @@ namespace UitlenenVanFilms
                 {
                     image2.Dispose();
                 }
-                Ainstance.updateFilm(FilmID, txtname.Text, txtdescription.Text, lblFileName.Text, chckbxAvailable.Checked);
+                Ainstance.updateFilm(FilmID, txtname.Text, txtdescription.Text, txtCategory.Text, lblFileName.Text, chckbxAvailable.Checked);
             }
         }
 

@@ -58,6 +58,15 @@ namespace UitlenenVanFilms
             {
                 ok = true;
             }
+            if (txtCategory.Text.Equals(""))
+            {
+                MessageBox.Show(Errors["setFile"], "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ok = false;
+            }
+            else
+            {
+                ok = true;
+            }
 
             if (ok)
             {
@@ -96,7 +105,7 @@ namespace UitlenenVanFilms
         {
             if(close)
             {
-                Ainstance.insertFilm(FilmID, txtname.Text, txtdescription.Text, lblFileName.Text);
+                Ainstance.insertFilm(FilmID, txtname.Text, txtdescription.Text, txtCategory.Text, lblFileName.Text);
             }
         }
 

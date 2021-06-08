@@ -38,15 +38,17 @@ namespace UitlenenVanFilms
             this.txtdescription = new System.Windows.Forms.TextBox();
             this.txtname = new System.Windows.Forms.TextBox();
             this.chckbxAvailable = new System.Windows.Forms.CheckBox();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxFile)).BeginInit();
             this.SuspendLayout();
             // 
             // pctrbxFile
             // 
             this.pctrbxFile.BackColor = System.Drawing.Color.White;
-            this.pctrbxFile.Location = new System.Drawing.Point(102, 268);
+            this.pctrbxFile.Location = new System.Drawing.Point(102, 295);
             this.pctrbxFile.Name = "pctrbxFile";
-            this.pctrbxFile.Size = new System.Drawing.Size(150, 186);
+            this.pctrbxFile.Size = new System.Drawing.Size(150, 159);
             this.pctrbxFile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctrbxFile.TabIndex = 15;
             this.pctrbxFile.TabStop = false;
@@ -61,7 +63,7 @@ namespace UitlenenVanFilms
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(102, 239);
+            this.btnChoose.Location = new System.Drawing.Point(102, 266);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(85, 23);
             this.btnChoose.TabIndex = 13;
@@ -124,11 +126,29 @@ namespace UitlenenVanFilms
             this.chckbxAvailable.Text = "Beschikbaar";
             this.chckbxAvailable.UseVisualStyleBackColor = true;
             // 
+            // txtCategory
+            // 
+            this.txtCategory.Location = new System.Drawing.Point(102, 240);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(223, 20);
+            this.txtCategory.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 243);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Categorie";
+            // 
             // frmWijzig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 523);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.chckbxAvailable);
             this.Controls.Add(this.pctrbxFile);
             this.Controls.Add(this.lblFileName);
@@ -159,5 +179,7 @@ namespace UitlenenVanFilms
         private System.Windows.Forms.TextBox txtdescription;
         private System.Windows.Forms.TextBox txtname;
         private System.Windows.Forms.CheckBox chckbxAvailable;
+        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -39,3 +39,30 @@ C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVan
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmUser.resources
 C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\C#\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources
 D:\school\C# projects\jaar 2\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmSetSchedule.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.AssemblyReference.cache
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmAdmin.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmSetSchedule.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmUser.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmLog.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.Properties.Resources.resources
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.GenerateResource.cache
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
+C:\Users\avida\Documents\New folder\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csprojAssemblyReference.cache
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmAdmin.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmSetSchedule.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmUser.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmToevoegen.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmWijzig.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.frmLog.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.Properties.Resources.resources
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.GenerateResource.cache
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.csproj.CoreCompileInputs.cache
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.exe
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\obj\Debug\UitlenenVanFilms.pdb
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe.config
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.exe
+C:\Users\rll6ib\Documents\5IB\Matthis_Van_Hoecke\UitlenenVanFilms\UitlenenVanFilms\bin\Debug\UitlenenVanFilms.pdb

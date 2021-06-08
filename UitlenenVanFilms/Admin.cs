@@ -98,6 +98,7 @@ namespace UitlenenVanFilms
             view.Columns.Add("ID");
             view.Columns.Add(Notifications["Description"]);
             view.Columns.Add(Notifications["Available"]);
+            view.Columns.Add(Notifications["Category"]);
 
             view.Columns[0].DisplayIndex = 1;
 
@@ -111,6 +112,18 @@ namespace UitlenenVanFilms
             paths = new List<string>();
             paths = Directory.GetFiles("../Images/").ToList<string>();
 
+            bool ok = false;
+            for(int i = 0; i < filmitems.Count; i++)
+            {
+                if(filmitems[i].ContainsKey("Fine") && filmitems[i]["Fine"] != null)
+                {
+                    ok = true;
+                }
+            }
+            if(ok)
+            {
+                view.Columns.Add(Notifications["Fine"]);
+            }
             for (int i = 0; i < filmitems.Count; i++)
             {
                 var image = Image.FromFile("../Images/" + filmitems[i]["FilmID"] + ".png");
@@ -119,9 +132,9 @@ namespace UitlenenVanFilms
                 view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["FilmID"]);
                 view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Description"]);
                 view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Available"]);
-                if (filmitems[i]["Fine"] != null)
+                view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Category"]);
+                if (filmitems[i].ContainsKey("Fine"))
                 {
-                    view.Columns.Add(Notifications["Fine"]);
                     view.Items[view.Items.Count - 1].SubItems.Add(filmitems[i]["Fine"]);
                 }
 
@@ -132,9 +145,10 @@ namespace UitlenenVanFilms
             view.Columns[1].Width = 30;
             view.Columns[2].Width = 300;
             view.Columns[3].Width = 80;
+            view.Columns[4].Width = 300;
 
             view.Columns[1].TextAlign = HorizontalAlignment.Center;
-            view.Columns[3].TextAlign = HorizontalAlignment.Center;
+            view.Columns[4].TextAlign = HorizontalAlignment.Center;
 
             return view;
         }
@@ -159,7 +173,7 @@ namespace UitlenenVanFilms
 
                     while (dataLezer.Read())
                     {
-                        filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() }, {"Fine", dataLezer.FieldCount == 5 ? dataLezer.GetValue(4).ToString() : null } });
+                        filmitems.Add(new Dictionary<string, string>() { { "FilmID", dataLezer.GetValue(0).ToString() }, { "Name", dataLezer.GetValue(1).ToString() }, { "Description", dataLezer.GetValue(2).ToString() }, { "Available", dataLezer.GetValue(3).ToString() }, { "Category", dataLezer.GetValue(4).ToString() }, { "Fine", dataLezer.FieldCount == 6 ? dataLezer.GetValue(5).ToString() : null } });
                     }
                 }
                 catch (Exception ex)
@@ -255,7 +269,7 @@ namespace UitlenenVanFilms
             toevoegen.Show();
         }
 
-        public void insertFilm(int FilmID, string name, string desc, string path)
+        public void insertFilm(int FilmID, string name, string desc, string Category, string path)
         {
 
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
@@ -266,13 +280,14 @@ namespace UitlenenVanFilms
                 String opdrString;
 
 
-                opdrString = "INSERT INTO tblFilms (FilmID, FilmName, Description) VALUES (?,?,?)";
+                opdrString = "INSERT INTO tblFilms (FilmID, FilmName, Description, Category) VALUES (?,?,?,?)";
                 //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                 OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
                 opdracht2.Parameters.AddWithValue("", FilmID);
                 opdracht2.Parameters.AddWithValue("", name);
                 opdracht2.Parameters.AddWithValue("", desc);
+                opdracht2.Parameters.AddWithValue("", Category);
 
                 opdracht2.ExecuteNonQuery();
 
@@ -292,11 +307,12 @@ namespace UitlenenVanFilms
             lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count-1].SubItems.Add(FilmID.ToString());
             lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count-1].SubItems.Add(desc);
             lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count-1].SubItems.Add(true.ToString());
-            filmitems.Add(new Dictionary<string, string>() { { "FilmID", FilmID.ToString() }, { "Name", name }, { "Description", desc }, { "Available", "true" } });
+            lstvwFilmsAdmin.Items[lstvwFilmsAdmin.Items.Count - 1].SubItems.Add(Category);
+            filmitems.Add(new Dictionary<string, string>() { { "FilmID", FilmID.ToString() }, { "Name", name }, { "Description", desc }, { "Available", "true" }, { "Category", Category } });
             image.Dispose();
         }
 
-        public void updateFilm(int FilmID, string name, string desc, string path, bool available)
+        public void updateFilm(int FilmID, string name, string desc, string Category, string path, bool available)
         {
             String verbindingsstring = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=../Films.accdb";
             OleDbConnection verbinding = new OleDbConnection(verbindingsstring);
@@ -306,13 +322,14 @@ namespace UitlenenVanFilms
                 String opdrString;
 
 
-                opdrString = "UPDATE tblFilms SET FilmName = ?, Description = ?, Available = ? WHERE FilmID = ?";
+                opdrString = "UPDATE tblFilms SET FilmName = ?, Description = ?, Available = ?, Category = ? WHERE FilmID = ?";
                 //Let op de ' bij het invoegen van strings, opgelet hier worden vaste gegevens toegevoegd!!!!
                 OleDbCommand opdracht2 = new OleDbCommand(opdrString, verbinding);
 
                 opdracht2.Parameters.AddWithValue("", name);
                 opdracht2.Parameters.AddWithValue("", desc);
                 opdracht2.Parameters.AddWithValue("", available);
+                opdracht2.Parameters.AddWithValue("", Category);
                 opdracht2.Parameters.AddWithValue("", FilmID);
 
                 opdracht2.ExecuteNonQuery();
@@ -336,6 +353,7 @@ namespace UitlenenVanFilms
             filmitems[SelectedIndex]["Description"] = desc;
             filmitems[SelectedIndex]["Name"] = name;
             filmitems[SelectedIndex]["Available"] = available.ToString();
+            filmitems[SelectedIndex]["Category"] = Category;
 
             createImageList(lstvwFilmsAdmin);
         }
@@ -369,7 +387,7 @@ namespace UitlenenVanFilms
             if(lstvwFilmsAdmin.SelectedItems.Count == 1)
             {
                 int index = lstvwFilmsAdmin.SelectedItems[0].Index;
-                frmWijzig wijzig = new frmWijzig(Convert.ToInt32(filmitems[index]["FilmID"]), filmitems[index]["Name"], filmitems[index]["Description"], Convert.ToBoolean(filmitems[index]["Available"]), this, instance);
+                frmWijzig wijzig = new frmWijzig(Convert.ToInt32(filmitems[index]["FilmID"]), filmitems[index]["Name"], filmitems[index]["Description"], Convert.ToBoolean(filmitems[index]["Available"]), filmitems[index]["Category"], this, instance);
                 wijzig.Show();
 
                 SelectedIndex = index;

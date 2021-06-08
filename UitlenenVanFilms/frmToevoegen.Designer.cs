@@ -37,6 +37,8 @@
             this.lblFileName = new System.Windows.Forms.Label();
             this.pctrbxFile = new System.Windows.Forms.PictureBox();
             this.chckbxAvailable = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCategory = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxFile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +88,7 @@
             // 
             // btnChoose
             // 
-            this.btnChoose.Location = new System.Drawing.Point(97, 235);
+            this.btnChoose.Location = new System.Drawing.Point(97, 265);
             this.btnChoose.Name = "btnChoose";
             this.btnChoose.Size = new System.Drawing.Size(85, 23);
             this.btnChoose.TabIndex = 5;
@@ -105,9 +107,9 @@
             // pctrbxFile
             // 
             this.pctrbxFile.BackColor = System.Drawing.Color.White;
-            this.pctrbxFile.Location = new System.Drawing.Point(97, 264);
+            this.pctrbxFile.Location = new System.Drawing.Point(97, 294);
             this.pctrbxFile.Name = "pctrbxFile";
-            this.pctrbxFile.Size = new System.Drawing.Size(150, 186);
+            this.pctrbxFile.Size = new System.Drawing.Size(150, 156);
             this.pctrbxFile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctrbxFile.TabIndex = 7;
             this.pctrbxFile.TabStop = false;
@@ -118,18 +120,36 @@
             this.chckbxAvailable.Checked = true;
             this.chckbxAvailable.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chckbxAvailable.Enabled = false;
-            this.chckbxAvailable.Location = new System.Drawing.Point(97, 212);
+            this.chckbxAvailable.Location = new System.Drawing.Point(97, 242);
             this.chckbxAvailable.Name = "chckbxAvailable";
             this.chckbxAvailable.Size = new System.Drawing.Size(85, 17);
             this.chckbxAvailable.TabIndex = 8;
             this.chckbxAvailable.Text = "Beschikbaar";
             this.chckbxAvailable.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 220);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Categorie";
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Location = new System.Drawing.Point(97, 217);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(223, 20);
+            this.txtCategory.TabIndex = 19;
+            // 
             // frmToevoegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(361, 521);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.chckbxAvailable);
             this.Controls.Add(this.pctrbxFile);
             this.Controls.Add(this.lblFileName);
@@ -159,5 +179,7 @@
         private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.PictureBox pctrbxFile;
         private System.Windows.Forms.CheckBox chckbxAvailable;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCategory;
     }
 }

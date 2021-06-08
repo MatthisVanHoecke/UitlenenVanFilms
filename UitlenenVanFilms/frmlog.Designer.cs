@@ -44,8 +44,6 @@
             this.lblCreateUserError = new System.Windows.Forms.Label();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
-            this.lblCreateEmail = new System.Windows.Forms.Label();
-            this.txtCreateEmail = new System.Windows.Forms.TextBox();
             this.btnRegistreren = new System.Windows.Forms.Button();
             this.lblCreatePassword = new System.Windows.Forms.Label();
             this.txtCreatePassword = new System.Windows.Forms.TextBox();
@@ -132,11 +130,11 @@
             // lblusername
             // 
             this.lblusername.AutoSize = true;
-            this.lblusername.Location = new System.Drawing.Point(213, 131);
+            this.lblusername.Location = new System.Drawing.Point(253, 131);
             this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(98, 13);
+            this.lblusername.Size = new System.Drawing.Size(58, 13);
             this.lblusername.TabIndex = 1;
-            this.lblusername.Text = "Usernaam of Email:";
+            this.lblusername.Text = "Usernaam:";
             // 
             // txtUserLogin
             // 
@@ -154,8 +152,6 @@
             this.tabRegistreren.Controls.Add(this.lblCreateUserError);
             this.tabRegistreren.Controls.Add(this.lblConfirmPassword);
             this.tabRegistreren.Controls.Add(this.txtConfirmPassword);
-            this.tabRegistreren.Controls.Add(this.lblCreateEmail);
-            this.tabRegistreren.Controls.Add(this.txtCreateEmail);
             this.tabRegistreren.Controls.Add(this.btnRegistreren);
             this.tabRegistreren.Controls.Add(this.lblCreatePassword);
             this.tabRegistreren.Controls.Add(this.txtCreatePassword);
@@ -218,22 +214,6 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(177, 20);
             this.txtConfirmPassword.TabIndex = 12;
             // 
-            // lblCreateEmail
-            // 
-            this.lblCreateEmail.AutoSize = true;
-            this.lblCreateEmail.Location = new System.Drawing.Point(273, 136);
-            this.lblCreateEmail.Name = "lblCreateEmail";
-            this.lblCreateEmail.Size = new System.Drawing.Size(35, 13);
-            this.lblCreateEmail.TabIndex = 11;
-            this.lblCreateEmail.Text = "Email:";
-            // 
-            // txtCreateEmail
-            // 
-            this.txtCreateEmail.Location = new System.Drawing.Point(314, 133);
-            this.txtCreateEmail.Name = "txtCreateEmail";
-            this.txtCreateEmail.Size = new System.Drawing.Size(177, 20);
-            this.txtCreateEmail.TabIndex = 10;
-            // 
             // btnRegistreren
             // 
             this.btnRegistreren.Location = new System.Drawing.Point(314, 211);
@@ -263,7 +243,7 @@
             // lblCreateUser
             // 
             this.lblCreateUser.AutoSize = true;
-            this.lblCreateUser.Location = new System.Drawing.Point(250, 110);
+            this.lblCreateUser.Location = new System.Drawing.Point(250, 132);
             this.lblCreateUser.Name = "lblCreateUser";
             this.lblCreateUser.Size = new System.Drawing.Size(58, 13);
             this.lblCreateUser.TabIndex = 6;
@@ -271,7 +251,7 @@
             // 
             // txtCreateUser
             // 
-            this.txtCreateUser.Location = new System.Drawing.Point(314, 107);
+            this.txtCreateUser.Location = new System.Drawing.Point(314, 129);
             this.txtCreateUser.Name = "txtCreateUser";
             this.txtCreateUser.Size = new System.Drawing.Size(177, 20);
             this.txtCreateUser.TabIndex = 5;
@@ -310,8 +290,6 @@
         private System.Windows.Forms.Button btnInloggen;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox txtConfirmPassword;
-        private System.Windows.Forms.Label lblCreateEmail;
-        private System.Windows.Forms.TextBox txtCreateEmail;
         private System.Windows.Forms.Button btnRegistreren;
         private System.Windows.Forms.Label lblCreatePassword;
         private System.Windows.Forms.TextBox txtCreatePassword;
